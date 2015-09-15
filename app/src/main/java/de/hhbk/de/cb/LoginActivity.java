@@ -5,26 +5,30 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
-    private User user;
-    private LoginController loginController;
-    private Button buttonLogin;
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        user = new User();
-        loginController = new LoginController(user);
-        buttonLogin = (Button) findViewById(R.id.buttonLogin);
+        setContentView(R.layout.activity_login);
+        EditText editTextUsername=(EditText) findViewById(R.id.textFieldName);
+        EditText editTextPassword=(EditText) findViewById(R.id.textFieldPassword);
+
+        User user = new User();
+        user.setName("Heinrich");
+        user.setPassword("Hertz");
+
+        LoginController loginController = new LoginController(user, editTextUsername, editTextPassword, this);
+        Button buttonLogin = (Button) findViewById(R.id.buttonLogin);
         buttonLogin.setOnClickListener(loginController);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        //Inflate the menu; this adds items to the action bar if it is present.
+        //getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
