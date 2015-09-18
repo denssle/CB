@@ -16,11 +16,7 @@ public class LoginActivity extends AppCompatActivity {
         EditText editTextUsername=(EditText) findViewById(R.id.textFieldName);
         EditText editTextPassword=(EditText) findViewById(R.id.textFieldPassword);
 
-        User user = new User();
-        user.setName("Heinrich");
-        user.setPassword("Hertz");
-
-        LoginController loginController = new LoginController(user, editTextUsername, editTextPassword, this);
+        LoginController loginController = new LoginController(editTextUsername, editTextPassword, this);
         Button buttonLogin = (Button) findViewById(R.id.buttonLogin);
         buttonLogin.setOnClickListener(loginController);
     }

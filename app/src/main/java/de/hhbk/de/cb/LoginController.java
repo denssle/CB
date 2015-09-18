@@ -6,6 +6,8 @@ import android.view.*;
 import android.widget.Toast;
 import android.content.Intent;
 
+import org.json.JSONObject;
+
 import static android.support.v4.app.ActivityCompat.startActivity;
 
 /**
@@ -17,19 +19,32 @@ public class LoginController implements View.OnClickListener {
     private static User user;
     private Activity loginActivity;
 
-    public LoginController(User user, EditText editTextUsername, EditText editTextPasswort, Activity loginActivity) {
-        this.user = user;
+    public LoginController(EditText editTextUsername, EditText editTextPasswort, Activity loginActivity) {
         this.editTextUsername = editTextUsername;
         this.editTextPasswort = editTextPasswort;
         this.loginActivity = loginActivity;
+        user = new User();
     }
 
     public void onClick(View v) {
         String name =editTextUsername.getText().toString();
         String password =editTextPasswort.getText().toString();
+        JSONObject result = null;
 
-        if(user.isNameCorrect(name)&&user.isPasswordCorrect(password)) {
+        try
+        {
+            WebConnection task = new WebConnection();
+            task.execute(name, password);
+            result = task.get();  //Add this
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+
+        if(result != null) {
             toastToast("Login erfolgreich", v);
+            user.init(name,password,result);
             loginActivity.startActivity(new Intent(loginActivity, MenueActivity.class));
         } else {
             toastToast("Login gescheitert.", v);
