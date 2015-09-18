@@ -69,17 +69,12 @@ class WebConnection extends AsyncTask<String, Void, JSONObject> {
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
-            return null;
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
         } catch (NullPointerException e) {
             e.printStackTrace();
-            return null;
         } finally {
-
         }
-        debug.getInt().message(jsonObject.keys().toString());
         return jsonObject;
     }
 
@@ -90,14 +85,22 @@ class WebConnection extends AsyncTask<String, Void, JSONObject> {
 
     private JSONObject makeAJSON(String s) {
         s=s.substring(1, s.length()-1);
-        debug.getInt().message("Kurz: "+s);
+
         Map<String, String> map = new HashMap<String, String>();
         String[] pairs = s.split(",");
         for (int i=0;i<pairs.length;i++) {
             String pair = pairs[i];
             String[] keyValue = pair.split(":");
-            map.put(keyValue[0], String.valueOf(keyValue[1]));
+            String key = keyValue[0];
+            String value = keyValue[1];
+
+            key = key.substring(1, key.length()-1);
+            if(value.length()>1){
+                value = value.substring(1, value.length()-1);
+            }
+            map.put(key, value);
         }
+        debug.getInt().message("Kurz: "+map);
         return new JSONObject(map);
     }
 }

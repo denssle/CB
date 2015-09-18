@@ -30,24 +30,28 @@ public class LoginController implements View.OnClickListener {
         String name =editTextUsername.getText().toString();
         String password =editTextPasswort.getText().toString();
         JSONObject result = null;
-
+        String success = "";
+        String message = "Verbindung fehlerhaft.";
         try
         {
             WebConnection task = new WebConnection();
             task.execute(name, password);
-            result = task.get();  //Add this
+            result = task.get();
+            debug.getInt().message("Erfolg: "+result);
+            success = (String) result.get("success");
+            message = (String) result.get("message");
         }
         catch(Exception ex)
         {
             ex.printStackTrace();
         }
 
-        if(result != null) {
-            toastToast("Login erfolgreich", v);
+        if(success.equals("1")) {
+            toastToast(message, v);
             user.init(name,password,result);
             loginActivity.startActivity(new Intent(loginActivity, MenueActivity.class));
         } else {
-            toastToast("Login gescheitert.", v);
+            toastToast(message, v);
         }
     }
 
