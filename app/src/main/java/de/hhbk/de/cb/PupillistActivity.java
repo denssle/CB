@@ -1,16 +1,11 @@
 package de.hhbk.de.cb;
 
-import android.os.Bundle;
-import android.os.StrictMode;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-
 /**
  * Created by admin on 22.09.15.
  */
 public class PupillistActivity extends AppCompatActivity {
+    private User currentUser;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
