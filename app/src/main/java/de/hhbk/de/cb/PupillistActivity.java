@@ -11,7 +11,6 @@ import android.view.MenuItem;
  * Created by admin on 22.09.15.
  */
 public class PupillistActivity extends AppCompatActivity {
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

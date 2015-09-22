@@ -15,10 +15,11 @@ public class DropdownMenue {
         }
         else if(id == R.id.action_user) {
             debug.getInt().message("Menue: USR");
+            menueActivity.startActivity(new Intent(menueActivity, UserActivity.class));
             return true;
         }
         else if(id == R.id.action_pupillist) {
-            debug.getInt().message("Menue: USR");
+            debug.getInt().message("Menue: Schuelerliste");
             menueActivity.startActivity(new Intent(menueActivity, PupillistActivity.class));
             return true;
         }

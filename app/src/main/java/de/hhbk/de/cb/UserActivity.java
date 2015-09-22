@@ -6,17 +6,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 /**
  * Created by admin on 22.09.15.
  */
 public class UserActivity extends AppCompatActivity {
+    private User currentUser;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_user);
+
+        currentUser = LoginController.getUser();
+        TextView fornameTextField = (TextView) findViewById(R.id.textFieldForname);
+        fornameTextField.setText(currentUser.getForname());
+
+        TextView lastnameTextField = (TextView) findViewById(R.id.textFieldLastname);
+        lastnameTextField.setText(currentUser.getLastname());
     }
 
     @Override
