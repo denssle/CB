@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/label_Username"
+        android:text="@string/username"
         android:id="@+id/textName"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/labelPasswort"
+        android:text="@string/password"
         android:id="@+id/textPasswort"
         android:layout_below="@+id/textFieldName"
         android:layout_centerHorizontal="true" />
@@ -49,9 +49,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_ok"
+        android:text="@string/ok"
         android:id="@+id/buttonLogin"
         android:layout_below="@+id/textFieldPassword"
         android:layout_centerHorizontal="true" />
-
 </RelativeLayout>

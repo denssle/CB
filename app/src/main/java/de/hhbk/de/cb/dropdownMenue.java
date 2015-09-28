@@ -14,7 +14,7 @@ public class DropdownMenue {
             return true;
         }
         else if(id == R.id.action_user) {
-            debug.getInt().message("Menue: USR");
+            debug.getInt().message("Menue: User");
             menueActivity.startActivity(new Intent(menueActivity, UserActivity.class));
             return true;
         }

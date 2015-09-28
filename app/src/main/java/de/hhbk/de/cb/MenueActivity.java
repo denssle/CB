@@ -1,6 +1,5 @@
 package de.hhbk.de.cb;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -22,11 +21,9 @@ public class MenueActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         setContentView(R.layout.activity_menue);
-        //this.setTitle("Main");
         currentUser = LoginController.getUser();
         TextView textView = (TextView) findViewById(R.id.textUserName);
         textView.setText(currentUser.getForname()+" "+currentUser.getLastname());
-        //setHasOptionsMenu(true);
     }
 
     @Override

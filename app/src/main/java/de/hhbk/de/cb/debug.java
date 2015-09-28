@@ -10,10 +10,10 @@ public class debug {
     public static debug getInt() {
         return ourInstance;
     }
-
     private debug() {
         anInt = 0;
     }
+
     public void message(String s) {
         anInt += 1;
         System.out.println(anInt +" : "+s);

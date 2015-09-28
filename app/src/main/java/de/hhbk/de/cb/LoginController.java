@@ -1,14 +1,12 @@
 package de.hhbk.de.cb;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.widget.EditText;
 import android.view.*;
 import android.widget.Toast;
 import android.content.Intent;
-
 import org.json.JSONObject;
-
-import static android.support.v4.app.ActivityCompat.startActivity;
 
 /**
  * Created by admin on 10.09.15.
@@ -32,10 +30,13 @@ public class LoginController implements View.OnClickListener {
         JSONObject result = null;
         String success = "";
         String message = "Verbindung fehlerhaft.";
+        AsyncTask.Status status;
         try
         {
             WebConnection task = new WebConnection();
             task.execute(name, password);
+            status = task.getStatus();
+            debug.getInt().message("Status: " + status);
             result = task.get();
             debug.getInt().message("Erfolg: "+result);
             success = (String) result.get("success");
