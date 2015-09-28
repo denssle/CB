@@ -1,33 +1,25 @@
 package de.hhbk.de.cb;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
+import android.widget.TextView;
+import android.os.Bundle;
 
 /**
- * Created by admin on 22.09.15.
+ * Created by admin on 24.09.15.
  */
-public class PupillistActivity extends AppCompatActivity {
+public class UpdateUserActivity extends AppCompatActivity {
+    private User currentUser;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        PupillistFragment fragment = new PupillistFragment();
-        fragmentTransaction.add(R.id.action_pupillist, fragment);
-        fragmentTransaction.commit();
+        setContentView(R.layout.activity_user);
+        currentUser = LoginController.getUser();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

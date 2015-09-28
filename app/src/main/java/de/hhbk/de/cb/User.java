@@ -1,8 +1,8 @@
 package de.hhbk.de.cb;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.UUID;
+
 /**
  * Created by admin on 10.09.15.
  */
@@ -89,6 +89,8 @@ public class User {
             this.title = (String) result.get("anrede");
             this.shortname = (String) result.get("kuerzel");
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }

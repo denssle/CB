@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:clickable="false">
+    android:paddingBottom="@dimen/activity_vertical_margin">
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,7 +23,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/content"
-        android:id="@+id/textFieldForname"
+        android:id="@+id/updateTextFieldForname"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_alignBottom="@+id/textForname" />
@@ -42,7 +43,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/content"
-        android:id="@+id/textFieldLastname"
+        android:id="@+id/updateTextFieldLastname"
         android:layout_alignBaseline="@+id/textLastname"
         android:layout_alignBottom="@+id/textLastname"
         android:layout_centerHorizontal="true" />
@@ -62,9 +63,10 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/content"
-        android:id="@+id/textFieldTitle"
-        android:layout_below="@+id/textFieldLastname"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/updateTextFieldTitle"
+        android:layout_below="@+id/updateTextFieldLastname"
+        android:layout_alignLeft="@+id/updateTextFieldLastname"
+        android:layout_alignStart="@+id/updateTextFieldLastname" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -81,9 +83,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/content"
-        android:id="@+id/textFieldShortname"
-        android:layout_below="@+id/textFieldTitle"
-        android:layout_alignLeft="@+id/textFieldTitle"
-        android:layout_alignStart="@+id/textFieldTitle" />
-
+        android:id="@+id/updateTextFieldShortname"
+        android:layout_below="@+id/updateTextFieldTitle"
+        android:layout_alignLeft="@+id/updateTextFieldTitle"
+        android:layout_alignStart="@+id/updateTextFieldTitle" />
 </RelativeLayout>

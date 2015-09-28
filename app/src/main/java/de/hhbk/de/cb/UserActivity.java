@@ -1,7 +1,6 @@
 package de.hhbk.de.cb;
 
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,8 +16,6 @@ public class UserActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
         setContentView(R.layout.activity_user);
 
         currentUser = LoginController.getUser();
@@ -27,6 +24,12 @@ public class UserActivity extends AppCompatActivity {
 
         TextView lastnameTextField = (TextView) findViewById(R.id.textFieldLastname);
         lastnameTextField.setText(currentUser.getLastname());
+
+        TextView titleTextField = (TextView) findViewById(R.id.textFieldTitle);
+        titleTextField.setText(currentUser.getTitle());
+
+        TextView shortTextField = (TextView) findViewById(R.id.textFieldShortname);
+        shortTextField.setText(currentUser.getShortname());
     }
 
     @Override

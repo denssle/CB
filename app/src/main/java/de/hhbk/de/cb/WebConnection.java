@@ -9,7 +9,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -102,5 +101,10 @@ class WebConnection extends AsyncTask<String, Void, JSONObject> {
         }
         debug.getInt().message("Kurz: "+map);
         return new JSONObject(map);
+    }
+
+    @Override
+    protected void onProgressUpdate(Void... values) {
+        super.onProgressUpdate(values);
     }
 }

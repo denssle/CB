@@ -12,9 +12,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/action_settings"
+        android:text="@string/settings"
         android:id="@+id/textSettings"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/textSettings"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switch1"
+        android:layout_below="@+id/textSettings"
+        android:layout_toRightOf="@+id/textSettings"
+        android:layout_toEndOf="@+id/textSettings"
+        android:checked="true" />
 </RelativeLayout>
