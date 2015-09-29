@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.os.Bundle;
@@ -35,6 +36,11 @@ public class UpdateUserActivity extends AppCompatActivity {
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
+        UpdateUserController controller = new UpdateUserController(this);
+        Button saveButton = (Button) findViewById(R.id.saveButton);
+        saveButton.setOnClickListener(controller);
+        Button cancelButton = (Button) findViewById(R.id.cancelButton);
+        cancelButton.setOnClickListener(controller);
     }
 
     @Override

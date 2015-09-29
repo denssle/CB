@@ -41,9 +41,7 @@ public class LoginController implements View.OnClickListener {
             debug.getInt().message("Erfolg: "+result);
             success = (String) result.get("success");
             message = (String) result.get("message");
-        }
-        catch(Exception ex)
-        {
+        } catch(Exception ex) {
             ex.printStackTrace();
         }
 
