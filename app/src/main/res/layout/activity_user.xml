@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Anrede"
+        android:text="@string/title"
         android:id="@+id/textTitle"
         android:layout_below="@+id/textLastname"
         android:layout_alignParentLeft="true"
@@ -70,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Kürzel"
+        android:text="@string/shortname"
         android:id="@+id/textShortname"
         android:layout_below="@+id/textTitle"
         android:layout_alignParentLeft="true"
@@ -85,5 +85,13 @@
         android:layout_below="@+id/textFieldTitle"
         android:layout_alignLeft="@+id/textFieldTitle"
         android:layout_alignStart="@+id/textFieldTitle" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/update"
+        android:id="@+id/updateUserButton"
+        android:layout_below="@+id/textFieldShortname"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -15,18 +15,18 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/forname"
         android:id="@+id/textForname"
+        android:layout_alignBottom="@+id/updateTextFieldForname"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/content"
         android:id="@+id/updateTextFieldForname"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_alignBottom="@+id/textForname" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -34,18 +34,17 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Nachname"
         android:id="@+id/textLastname"
-        android:layout_below="@+id/textForname"
+        android:layout_alignBottom="@+id/updateTextFieldLastname"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/content"
         android:id="@+id/updateTextFieldLastname"
-        android:layout_alignBaseline="@+id/textLastname"
-        android:layout_alignBottom="@+id/textLastname"
+        android:layout_below="@+id/updateTextFieldForname"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -54,11 +53,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Anrede"
         android:id="@+id/textTitle"
-        android:layout_below="@+id/textLastname"
+        android:layout_above="@+id/updateTextFieldShortname"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -66,7 +65,9 @@
         android:id="@+id/updateTextFieldTitle"
         android:layout_below="@+id/updateTextFieldLastname"
         android:layout_alignLeft="@+id/updateTextFieldLastname"
-        android:layout_alignStart="@+id/updateTextFieldLastname" />
+        android:layout_alignStart="@+id/updateTextFieldLastname"
+        android:layout_alignRight="@+id/updateTextFieldLastname"
+        android:layout_alignEnd="@+id/updateTextFieldLastname" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -74,17 +75,34 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Kürzel"
         android:id="@+id/textShortname"
-        android:layout_below="@+id/textTitle"
+        android:layout_alignBottom="@+id/updateTextFieldShortname"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/content"
         android:id="@+id/updateTextFieldShortname"
         android:layout_below="@+id/updateTextFieldTitle"
-        android:layout_alignLeft="@+id/updateTextFieldTitle"
-        android:layout_alignStart="@+id/updateTextFieldTitle" />
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:id="@+id/saveButton"
+        android:layout_below="@+id/updateTextFieldShortname"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/cancelButton"
+        android:layout_below="@+id/textShortname"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

@@ -10,5 +10,8 @@
     <string name="pupillist">Schülerliste</string>
     <string name="forname">Vorname</string>
     <string name="lastname">Nachname</string>
+    <string name="shortname">Kürzel</string>
+    <string name="title">Anrede</string>
+    <string name="update">Bearbeiten</string>
     <string name="content">Inhalt</string>
 </resources>

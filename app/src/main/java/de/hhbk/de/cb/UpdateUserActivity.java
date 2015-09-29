@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.os.Bundle;
 
@@ -17,8 +18,23 @@ public class UpdateUserActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        setContentView(R.layout.activity_updateuser);
         currentUser = LoginController.getUser();
+        try {
+            EditText fornameEditText = (EditText) findViewById(R.id.updateTextFieldForname);
+            fornameEditText.setText(currentUser.getForname());
+
+            EditText lastnameEditText = (EditText) findViewById(R.id.updateTextFieldLastname);
+            lastnameEditText.setText(currentUser.getLastname());
+
+            EditText titleEditText = (EditText) findViewById(R.id.updateTextFieldTitle);
+            titleEditText.setText(currentUser.getTitle());
+
+            EditText shortEditText = (EditText) findViewById(R.id.updateTextFieldShortname);
+            shortEditText.setText(currentUser.getShortname());
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

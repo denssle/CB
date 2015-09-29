@@ -9,7 +9,7 @@ public class Pupil {
     UUID id;
     private String forname;
     private String lastname;
-    private String schoolclass;
+    private Schoolclass schoolclass;
 
     public Pupil() {
         this.id = UUID.randomUUID();
@@ -31,11 +31,11 @@ public class Pupil {
         this.lastname = lastname;
     }
 
-    public String getSchoolclass() {
+    public Schoolclass getSchoolclass() {
         return schoolclass;
     }
 
-    public void setSchoolclass(String schoolclass) {
+    public void setSchoolclass(Schoolclass schoolclass) {
         this.schoolclass = schoolclass;
     }
 
