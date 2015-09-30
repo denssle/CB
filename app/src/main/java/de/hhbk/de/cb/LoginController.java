@@ -27,9 +27,31 @@ public class LoginController implements View.OnClickListener {
     public void onClick(View v) {
         String name =editTextUsername.getText().toString();
         String password =editTextPasswort.getText().toString();
+
+        if (offlineCheck(name, password,v)) {
+            loginActivity.startActivity(new Intent(loginActivity, MenueActivity.class));
+        } else {
+            if(onlineCheck(name, password, v)) {
+                loginActivity.startActivity(new Intent(loginActivity, MenueActivity.class));
+            }
+        }
+    }
+
+    private boolean offlineCheck(String name, String password, View view) {
+        try {
+            if (name.equals(user.getUsername())&& password.equals(user.getPassword())) {
+                toastToast("Login erfolgreich.", view);
+                return true;
+            }
+        }catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+        toastToast("Login gescheitert.", view);
+        return false;
+    }
+
+    private Boolean onlineCheck(String name, String password, View view) {
         JSONObject result = null;
-        String success = "";
-        String message = "Verbindung fehlerhaft.";
         AsyncTask.Status status;
         try
         {
@@ -38,20 +60,18 @@ public class LoginController implements View.OnClickListener {
             status = task.getStatus();
             debug.getInt().message("Status: " + status);
             result = task.get();
-            debug.getInt().message("Erfolg: "+result);
-            success = (String) result.get("success");
-            message = (String) result.get("message");
+            debug.getInt().message("Erfolg: " + result);
+            String success = (String) result.get("success");
+            if (success.equals("1")) {
+                toastToast("Login erfolgreich.", view);
+                user.init(name, password, result);
+                return true;
+            }
         } catch(Exception ex) {
             ex.printStackTrace();
         }
-
-        if(success.equals("1")) {
-            toastToast(message, v);
-            user.init(name,password,result);
-            loginActivity.startActivity(new Intent(loginActivity, MenueActivity.class));
-        } else {
-            toastToast(message, v);
-        }
+        toastToast("Login gescheitert.", view);
+        return false;
     }
 
     private void toastToast(String output, View view) {
