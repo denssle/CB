@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
+        android:text="@string/content"
         android:id="@+id/textView5"
         android:layout_below="@+id/textSettings"
         android:layout_alignParentLeft="true"
@@ -31,7 +31,7 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/switch1"
+        android:id="@+id/settingsSwitch"
         android:layout_below="@+id/textSettings"
         android:layout_toRightOf="@+id/textSettings"
         android:layout_toEndOf="@+id/textSettings"
