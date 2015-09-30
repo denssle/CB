@@ -1,13 +1,13 @@
 package de.hhbk.de.cb;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 
 /**
  * Created by admin on 29.09.15.
  */
 public class UpdateUserController implements View.OnClickListener {
-    private Activity activity;
+    private UpdateUserActivity activity;
 
     public UpdateUserController(UpdateUserActivity updateUserActivity) {
         this.activity = updateUserActivity; // for intent
@@ -15,6 +15,13 @@ public class UpdateUserController implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        debug.getInt().message("onClick: " +v.getId());
+        switch(v.getId()) {
+            case R.id.saveButton:
+                activity.updateUser();
+                break;
+            case R.id.cancelButton:
+                break;
+        }
+        activity.startActivity(new Intent(activity, UserActivity.class));
     }
 }

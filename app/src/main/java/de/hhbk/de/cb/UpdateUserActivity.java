@@ -15,23 +15,26 @@ import android.os.Bundle;
  */
 public class UpdateUserActivity extends AppCompatActivity {
     private User currentUser;
-
+    private EditText fornameEditText;
+    private EditText lastnameEditText;
+    private EditText titleEditText;
+    private EditText shortEditText;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_updateuser);
         currentUser = LoginController.getUser();
         try {
-            EditText fornameEditText = (EditText) findViewById(R.id.updateTextFieldForname);
+            this.fornameEditText = (EditText) findViewById(R.id.updateTextFieldForname);
             fornameEditText.setText(currentUser.getForname());
 
-            EditText lastnameEditText = (EditText) findViewById(R.id.updateTextFieldLastname);
+            this.lastnameEditText = (EditText) findViewById(R.id.updateTextFieldLastname);
             lastnameEditText.setText(currentUser.getLastname());
 
-            EditText titleEditText = (EditText) findViewById(R.id.updateTextFieldTitle);
+            this.titleEditText = (EditText) findViewById(R.id.updateTextFieldTitle);
             titleEditText.setText(currentUser.getTitle());
 
-            EditText shortEditText = (EditText) findViewById(R.id.updateTextFieldShortname);
+            this.shortEditText = (EditText) findViewById(R.id.updateTextFieldShortname);
             shortEditText.setText(currentUser.getShortname());
         } catch (NullPointerException e) {
             e.printStackTrace();
@@ -41,6 +44,13 @@ public class UpdateUserActivity extends AppCompatActivity {
         saveButton.setOnClickListener(controller);
         Button cancelButton = (Button) findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(controller);
+    }
+
+    public void updateUser() {
+        currentUser.setForname(fornameEditText.getText().toString());
+        currentUser.setLastname(lastnameEditText.getText().toString());
+        currentUser.setTitle(titleEditText.getText().toString());
+        currentUser.setShortname(shortEditText.getText().toString());
     }
 
     @Override
