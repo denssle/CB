@@ -16,6 +16,12 @@ public class debug {
 
     public void message(String s) {
         anInt += 1;
-        System.out.println(anInt +" : "+s);
+        String no ="";
+        if(anInt < 10) {
+            no = "00";
+        } else if (anInt < 100) {
+            no = "0";
+        }
+        System.out.println(no+anInt+" : "+s);
     }
 }

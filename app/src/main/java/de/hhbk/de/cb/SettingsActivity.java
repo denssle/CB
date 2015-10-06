@@ -1,7 +1,6 @@
 package de.hhbk.de.cb;
 
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,14 +18,14 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.dropdown_menue, menu);
+        inflater.inflate(R.menu.dropdown_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        DropdownMenue menue = new DropdownMenue();
+        DropdownMenu menu = new DropdownMenu();
         int id = item.getItemId();
-        return menue.manageMenue(id, this);
+        return menu.manageMenu(id, this);
     }
 }

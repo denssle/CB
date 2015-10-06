@@ -20,7 +20,7 @@ public class MenueActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        setContentView(R.layout.activity_menue);
+        setContentView(R.layout.activity_menu);
         currentUser = LoginController.getUser();
         TextView textView = (TextView) findViewById(R.id.textUserName);
         textView.setText(currentUser.getForname()+" "+currentUser.getLastname());
@@ -29,14 +29,14 @@ public class MenueActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.dropdown_menue, menu);
+        inflater.inflate(R.menu.dropdown_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        DropdownMenue menue = new DropdownMenue();
+        DropdownMenu menu = new DropdownMenu();
         int id = item.getItemId();
-        return menue.manageMenue(id, this);
+        return menu.manageMenu(id, this);
     }
 }

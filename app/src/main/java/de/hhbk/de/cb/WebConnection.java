@@ -18,15 +18,10 @@ import java.util.Map;
  */
 
 class WebConnection extends AsyncTask<String, Void, JSONObject> {
-    // String: Logindaten als String Parameter übergeben
+    // String: Logindaten als String Parameter uebergeben
     // Void: Keine Fortschrittsanzeige
-    // JSONObject: Rückgabe der Datenbankanfrage als JSON Objekt
+    // JSONObject: Rueckgabe der Datenbankanfrage als JSON Objekt
     private final String USER_AGENT = "Mozilla/5.0";
-
-    @Override
-    protected void onPreExecute() {
-    // Zeige einen Dialog während der gesamten Datenbankanfrage
-    }
 
     @Override
     protected JSONObject doInBackground(String... logindaten) {
@@ -70,21 +65,13 @@ class WebConnection extends AsyncTask<String, Void, JSONObject> {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        } finally {
         }
         return jsonObject;
     }
 
-    @Override
-    protected void onPostExecute(JSONObject json) {
-    // Task abgeschlossen, Ergebnis kann verwendet werden
-    }
-
     private JSONObject makeAJSON(String s) {
         s=s.substring(1, s.length()-1);
-
+        //{"success":1,"message":"Login erfolgreich!","nachname":"Oenings","vorname":"Frank","anrede":"Herr","kuerzel":"OENI"}
         Map<String, String> map = new HashMap<String, String>();
         String[] pairs = s.split(",");
         for (int i=0;i<pairs.length;i++) {

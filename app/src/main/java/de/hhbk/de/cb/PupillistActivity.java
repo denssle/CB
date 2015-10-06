@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by admin on 22.09.15.
@@ -18,7 +20,8 @@ public class PupillistActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pupillist);
-        String[] values = new String[] {"Jahrgang 01","Jahrgang 02", "Jahrgang 03", "Jahrgang 04"};
+        List<Schoolclass> schoolclasses = buildClasses();
+        String[] values = makeStringsOutOfClasses(schoolclasses);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 R.layout.list_entry, R.id.pupillistEntry, values);
@@ -33,17 +36,46 @@ public class PupillistActivity extends ListActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //getMenuInflater().inflate(R.menu.dropdown_menue, menu);
-        //return super.onCreateOptionsMenu(menu);
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.dropdown_menue, menu);
+        inflater.inflate(R.menu.dropdown_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        DropdownMenue menue = new DropdownMenue();
+        DropdownMenu menu = new DropdownMenu();
         int id = item.getItemId();
-        return menue.manageMenue(id, this);
+        return menu.manageMenu(id, this);
+    }
+
+    private List<Schoolclass> buildClasses() {
+        List<Schoolclass> schoolclasses = new ArrayList<Schoolclass>();
+        String[] classnames = {"Jahrgang 01","Jahrgang 02", "Jahrgang 03", "Jahrgang 04"};
+        String[] lastnames = {"Agalisiore", "Athoe", "Briususaili", "Faumeti", "Gent", "Hocacn", "Jotanic", "Lyber", "Moimarileio", "Moion", "Nenchio", "Oeoron", "Pesia", "Pial", "Polceronu", "Rtheg", "Tesisthr", "Usarole", "Usoeod", "Ymonod","Bisse",
+                "Disicrumuri", "Duturidi", "Entag", "Farampre", "Ganasi", "Gertheusiu", "Icis", "Iolyr", "Joprtan", "Lasclaba", "Osthusares", "Regarp", "Rsmnteth", "Sion", "Ticoner", "Usica", "Vialic", "Ytusilu", "Zenot"};
+        String[] fornames = {"Astral Dancer", "Jasminebeats", "Amethyst Tinsel", "Berryjoe", "Pumpkin Set", "Bubble Blazer", "Dream Dasher", "Amethyst Toffee", "Foresthunt", "Hazel Vinyl", "Laughmarch", "Lemon Sparkle", "Polishfly", "Persimmonsstrudel Breeze", "Rainbow Voyager", "Rainbow Sweets", "Shore Lightning", "Silk Rocket", "Stampbuds", "Twilight Rhyme",
+                "Charming Starlight", "Star Ashes", "Emeraldaura", "Evening Light", "Shadeflurry Punch", "Treasurepop", "Jade Flame", "Joy Pastels", "Mahogany Sage", "Marble Riff", "Meadow Toffee", "Moonlight Twirler", "Peach Break", "Rain Gears", "Route Will", "Scrolldrop", "Spring Masher", "Timelink", "Trickssky", "Wave Sweets"};
+
+        for(int i = 0; i<4; i++){
+            Schoolclass schoolclass = new Schoolclass(classnames[i]);
+
+            for(int j = 0; j<10; j++) {
+                debug.getInt().message("i: "+i+" j: "+j+" name: "+fornames[j]+" "+lastnames[j]);
+                Pupil pupil = new Pupil();
+                pupil.setForname(fornames[j]);
+                pupil.setLastname(lastnames[j]);
+                pupil.setSchoolclass(schoolclass);
+                schoolclass.addPupil(pupil);
+            }
+            schoolclasses.add(schoolclass);
+        }
+        return schoolclasses;
+    }
+    private String[] makeStringsOutOfClasses(List<Schoolclass> schoolclasses) {
+        String[] result = new String[schoolclasses.size()];
+        for (int i=0; i<schoolclasses.size(); i++) {
+            result[i]=schoolclasses.get(i).getClassname();
+        }
+        return result;
     }
 }

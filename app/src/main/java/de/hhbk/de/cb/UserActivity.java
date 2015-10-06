@@ -5,11 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by admin on 22.09.15.
@@ -43,14 +40,14 @@ public class UserActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.dropdown_menue, menu);
+        inflater.inflate(R.menu.dropdown_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        DropdownMenue menue = new DropdownMenue();
+        DropdownMenu menu = new DropdownMenu();
         int id = item.getItemId();
-        return menue.manageMenue(id, this);
+        return menu.manageMenu(id, this);
     }
 }

@@ -1,5 +1,6 @@
 package de.hhbk.de.cb;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -9,10 +10,33 @@ import java.util.UUID;
 public class Schoolclass {
     private UUID id;
     private String classname;
-    private List pupils;
+    private List<Pupil> pupils;
 
     public Schoolclass(String classname) {
         this.id = UUID.randomUUID();
         this.classname = classname;
+        this.pupils = new ArrayList<Pupil>();
+    }
+    public UUID getID() {
+        return id;
+    }
+    public String getClassname() {
+        return classname;
+    }
+
+    public void setClassname(String classname) {
+        this.classname = classname;
+    }
+
+    public List<Pupil> getPupils() {
+        return pupils;
+    }
+
+    public void addPupil(Pupil pupil) {
+        this.pupils.add(pupil);
+    }
+
+    public int getNumberOfPupils() {
+        return pupils.size();
     }
 }

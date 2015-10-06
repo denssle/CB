@@ -23,17 +23,16 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/content"
-        android:id="@+id/textView5"
+        android:id="@+id/settingsTextView1"
         android:layout_below="@+id/textSettings"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Switch
+    <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/settingsSwitch"
-        android:layout_below="@+id/textSettings"
-        android:layout_toRightOf="@+id/textSettings"
-        android:layout_toEndOf="@+id/textSettings"
-        android:checked="true" />
+        android:id="@+id/settingsCheckBox"
+        android:layout_alignTop="@+id/settingsTextView1"
+        android:layout_centerHorizontal="true"
+        android:checked="false" />
 </RelativeLayout>

@@ -7,18 +7,18 @@ import android.support.v7.app.AppCompatActivity;
 /**
  * Created by admin on 22.09.15.
  */
-public class DropdownMenue {
-    public boolean manageMenue(int id, Activity menueActivity) {
+public class DropdownMenu {
+    public boolean manageMenu(int id, Activity menueActivity) {
         if (id == R.id.action_settings) {
-            debug.getInt().message("Menue: Settings");
+            debug.getInt().message("Menu: Settings");
             menueActivity.startActivity(new Intent(menueActivity, SettingsActivity.class));
             return true;
         } else if(id == R.id.action_user) {
-            debug.getInt().message("Menue: User");
+            debug.getInt().message("Menu: User");
             menueActivity.startActivity(new Intent(menueActivity, UserActivity.class));
             return true;
         } else if(id == R.id.action_pupillist) {
-            debug.getInt().message("Menue: Schuelerliste");
+            debug.getInt().message("Menu: Schuelerliste");
             menueActivity.startActivity(new Intent(menueActivity, PupillistActivity.class));
             return true;
         }
