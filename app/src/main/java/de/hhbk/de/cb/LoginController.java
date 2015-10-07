@@ -13,20 +13,20 @@ import org.json.JSONObject;
  */
 public class LoginController implements View.OnClickListener {
     private EditText editTextUsername;
-    private EditText editTextPasswort;
+    private EditText editTextPassword;
     private static User user;
     private Activity loginActivity;
 
-    public LoginController(EditText editTextUsername, EditText editTextPasswort, Activity loginActivity) {
+    public LoginController(EditText editTextUsername, EditText editTextPassword, Activity loginActivity) {
         this.editTextUsername = editTextUsername;
-        this.editTextPasswort = editTextPasswort;
+        this.editTextPassword = editTextPassword;
         this.loginActivity = loginActivity;
         user = new User();
     }
 
     public void onClick(View v) {
         String name =editTextUsername.getText().toString();
-        String password =editTextPasswort.getText().toString();
+        String password = editTextPassword.getText().toString();
 
         if (offlineCheck(name, password)) {
             loginActivity.startActivity(new Intent(loginActivity, MenueActivity.class));

@@ -2,7 +2,6 @@ package de.hhbk.de.cb;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by admin on 22.09.15.
@@ -19,7 +18,7 @@ public class DropdownMenu {
             return true;
         } else if(id == R.id.action_pupillist) {
             debug.getInt().message("Menu: Schuelerliste");
-            menueActivity.startActivity(new Intent(menueActivity, PupillistActivity.class));
+            menueActivity.startActivity(new Intent(menueActivity, PupilListActivity.class));
             return true;
         }
         return false;

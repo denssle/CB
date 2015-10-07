@@ -24,7 +24,7 @@
             android:label="@string/app_name">
         </activity>
         <activity
-            android:name=".PupillistActivity">
+            android:name=".PupilListActivity">
         </activity>
         <activity
             android:name=".UserActivity">
