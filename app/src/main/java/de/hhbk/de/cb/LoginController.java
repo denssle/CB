@@ -28,7 +28,7 @@ public class LoginController implements View.OnClickListener {
         String name =editTextUsername.getText().toString();
         String password =editTextPasswort.getText().toString();
 
-        if (offlineCheck(name, password,v)) {
+        if (offlineCheck(name, password)) {
             loginActivity.startActivity(new Intent(loginActivity, MenueActivity.class));
         } else {
             if(onlineCheck(name, password, v)) {
@@ -37,16 +37,14 @@ public class LoginController implements View.OnClickListener {
         }
     }
 
-    private boolean offlineCheck(String name, String password, View view) {
+    private boolean offlineCheck(String name, String password) {
         try {
-            if (name.equals(user.getUsername())&& password.equals(user.getPassword())) {
-                toastToast("Login erfolgreich.", view);
+            if (user.isPasswordCorrect(password)&& user.isUsernameCorrect(name)) {
                 return true;
             }
         }catch (NullPointerException e) {
             e.printStackTrace();
         }
-        toastToast("Login gescheitert.", view);
         return false;
     }
 
