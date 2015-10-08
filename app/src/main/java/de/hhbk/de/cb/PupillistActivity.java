@@ -46,19 +46,9 @@ public class PupilListActivity extends ListActivity {
             Schoolclass theChosenOne = schoolclasses.get(item);
             Toast.makeText(this, item +theChosenOne.getID()+ " !", Toast.LENGTH_LONG).show();
             showSchoolClass(theChosenOne);
+        } else {
+            debug.getInt().message("ELSE");
         }
-    }
-
-    private void showSchoolClass(Schoolclass sclass) {
-        String[] values = new String[sclass.getNumberOfPupils()];
-        List<Pupil> pupils = sclass.getPupils();
-        for(int i = 0; i<sclass.getNumberOfPupils(); i++) {
-            values[i] = pupils.get(i).getForname() +" "+ pupils.get(i).getLastname();
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                R.layout.pupil_entry, R.id.pubilEntryText, values);
-        setListAdapter(adapter);
-        button.setText(strings.save);
     }
 
     @Override
@@ -76,6 +66,24 @@ public class PupilListActivity extends ListActivity {
         return menu.manageMenu(id, this);
     }
 
+    /*
+    * Aendert den Inhalt der ListView von Klassen auf Schueler sowie den "Zurueck"Button zu einem "Speichern" Button. 
+     */
+    private void showSchoolClass(Schoolclass sclass) {
+        String[] values = new String[sclass.getNumberOfPupils()];
+        List<Pupil> pupils = sclass.getPupils();
+        for(int i = 0; i<sclass.getNumberOfPupils(); i++) {
+            values[i] = pupils.get(i).getForname() +" "+ pupils.get(i).getLastname();
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                R.layout.pupil_entry, R.id.pubilEntryText, values);
+        setListAdapter(adapter);
+        button.setText(strings.save);
+    }
+
+    /*
+    * Erzeugt Dummydaten.
+    */
     private Map<String, Schoolclass> buildClasses() {
         Map<String,Schoolclass> schoolclasses = new HashMap<>();
         String[] classnames = {"FUU 02","BAA", "YOLO", "HHBK"};
@@ -87,7 +95,7 @@ public class PupilListActivity extends ListActivity {
         for(int i = 0; i<4; i++){
             Schoolclass schoolclass = new Schoolclass(classnames[i]);
 
-            for(int j = 0; j<10; j++) {
+            for(int j = 10*i; j<10*(i+1); j++) {
                 debug.getInt().message("i: "+i+" j: "+j+" name: "+fornames[j]+" "+lastnames[j]);
                 Pupil pupil = new Pupil();
                 pupil.setForname(fornames[j]);
@@ -105,10 +113,14 @@ public class PupilListActivity extends ListActivity {
         return result;
     }
 
+    /**
+    *Kehr zur Klassenuebersicht zurueck.
+    */
     public void backToTheRoot() {
         String[] values = makeStringsOutOfClasses(schoolclasses);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 R.layout.list_entry, R.id.shoolClassEntry, values);
         setListAdapter(adapter);
+        button.setText(strings.back);
     }
 }
