@@ -12,14 +12,19 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by admin on 22.09.15.
 */
 public class PupilListActivity extends ListActivity {
-    private List<Schoolclass> schoolclasses;
-
+    private Map<String, Schoolclass> schoolclasses;
+    private PupilListController controller;
+    private Button button;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,25 +33,41 @@ public class PupilListActivity extends ListActivity {
         String[] values = makeStringsOutOfClasses(schoolclasses);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                R.layout.list_entry, R.id.pupillistEntry, values);
+                R.layout.list_entry, R.id.shoolClassEntry, values);
         setListAdapter(adapter);
 
-        PupilListController controller = new PupilListController(this);
-        Button buttonback = (Button) findViewById(R.id.pupillistButton);
-        buttonback.setOnClickListener(controller);
+        button = (Button) findViewById(R.id.pupillistButton);
+        this.controller = new PupilListController(this, button);
+        button.setOnClickListener(controller);
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         String item = (String) getListAdapter().getItem(position);
-        Toast.makeText(this, item + " !", Toast.LENGTH_LONG).show();
+        if (schoolclasses.containsKey(item)) {
+            Schoolclass theChosenOne = schoolclasses.get(item);
+            Toast.makeText(this, item +theChosenOne.getID()+ " !", Toast.LENGTH_LONG).show();
+            showSchoolClass(theChosenOne);
+        }
+    }
+
+    private void showSchoolClass(Schoolclass sclass) {
+        String[] values = new String[sclass.getNumberOfPupils()];
+        List<Pupil> pupils = sclass.getPupils();
+        for(int i = 0; i<sclass.getNumberOfPupils(); i++) {
+            values[i] = pupils.get(i).getForname() +" "+ pupils.get(i).getLastname();
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                R.layout.pupil_entry, R.id.pubilEntryText, values);
+        setListAdapter(adapter);
+        button.setText("Speichern");
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dropdown_menu, menu);
-        debug.getInt().message("PupilListAc: onCreateOptionsMenu: "+super.onCreateOptionsMenu(menu));
+        debug.getInt().message("PupilListAc: onCreateOptionsMenu: " + super.onCreateOptionsMenu(menu));
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -57,9 +78,9 @@ public class PupilListActivity extends ListActivity {
         return menu.manageMenu(id, this);
     }
 
-    private List<Schoolclass> buildClasses() {
-        List<Schoolclass> schoolclasses = new ArrayList<>();
-        String[] classnames = {"Jahrgang 01","Jahrgang 02", "Jahrgang 03", "Jahrgang 04"};
+    private Map<String, Schoolclass> buildClasses() {
+        Map<String,Schoolclass> schoolclasses = new HashMap<>();
+        String[] classnames = {"FUU 02","BAA", "YOLO", "HHBK"};
         String[] lastnames = {"Agalisiore", "Athoe", "Briususaili", "Faumeti", "Gent", "Hocacn", "Jotanic", "Lyber", "Moimarileio", "Moion", "Nenchio", "Oeoron", "Pesia", "Pial", "Polceronu", "Rtheg", "Tesisthr", "Usarole", "Usoeod", "Ymonod","Bisse",
                 "Disicrumuri", "Duturidi", "Entag", "Farampre", "Ganasi", "Gertheusiu", "Icis", "Iolyr", "Joprtan", "Lasclaba", "Osthusares", "Regarp", "Rsmnteth", "Sion", "Ticoner", "Usica", "Vialic", "Ytusilu", "Zenot"};
         String[] fornames = {"Astral Dancer", "Jasminebeats", "Amethyst Tinsel", "Berryjoe", "Pumpkin Set", "Bubble Blazer", "Dream Dasher", "Amethyst Toffee", "Foresthunt", "Hazel Vinyl", "Laughmarch", "Lemon Sparkle", "Polishfly", "Persimmonsstrudel Breeze", "Rainbow Voyager", "Rainbow Sweets", "Shore Lightning", "Silk Rocket", "Stampbuds", "Twilight Rhyme",
@@ -76,15 +97,20 @@ public class PupilListActivity extends ListActivity {
                 pupil.setSchoolclass(schoolclass);
                 schoolclass.addPupil(pupil);
             }
-            schoolclasses.add(schoolclass);
+            schoolclasses.put(schoolclass.getClassname(),schoolclass);
         }
         return schoolclasses;
     }
-    private String[] makeStringsOutOfClasses(List<Schoolclass> schoolclasses) {
-        String[] result = new String[schoolclasses.size()];
-        for (int i=0; i<schoolclasses.size(); i++) {
-            result[i]=schoolclasses.get(i).getClassname();
-        }
+    private String[] makeStringsOutOfClasses(Map<String,Schoolclass> classes) {
+        String[] result = new String[classes.size()];
+        result = classes.keySet().toArray(result);
         return result;
+    }
+
+    public void backToTheRoot() {
+        String[] values = makeStringsOutOfClasses(schoolclasses);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                R.layout.list_entry, R.id.shoolClassEntry, values);
+        setListAdapter(adapter);
     }
 }
