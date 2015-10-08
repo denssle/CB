@@ -11,12 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by admin on 22.09.15.
@@ -39,6 +36,7 @@ public class PupilListActivity extends ListActivity {
         button = (Button) findViewById(R.id.pupillistButton);
         this.controller = new PupilListController(this, button);
         button.setOnClickListener(controller);
+        button.setText(strings.back);
     }
 
     @Override
@@ -60,7 +58,7 @@ public class PupilListActivity extends ListActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 R.layout.pupil_entry, R.id.pubilEntryText, values);
         setListAdapter(adapter);
-        button.setText("Speichern");
+        button.setText(strings.save);
     }
 
     @Override
