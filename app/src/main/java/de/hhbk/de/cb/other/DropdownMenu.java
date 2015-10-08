@@ -4,10 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 
 import de.hhbk.de.cb.R;
-import de.hhbk.de.cb.activitys.PupilListActivity;
+import de.hhbk.de.cb.activitys.DatePickerActivity;
 import de.hhbk.de.cb.activitys.SettingsActivity;
 import de.hhbk.de.cb.activitys.UserActivity;
-import de.hhbk.de.cb.other.debug;
 
 /**
  * Created by admin on 22.09.15.
@@ -24,7 +23,7 @@ public class DropdownMenu {
             return true;
         } else if(id == R.id.action_pupillist) {
             debug.getInt().message("Menu: Schuelerliste");
-            menueActivity.startActivity(new Intent(menueActivity, PupilListActivity.class));
+            menueActivity.startActivity(new Intent(menueActivity, DatePickerActivity.class));
             return true;
         }
         return false;

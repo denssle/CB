@@ -32,6 +32,9 @@
         <activity
             android:name=".activitys.UpdateUserActivity">
         </activity>
+        <activity
+            android:name=".activitys.DatePickerActivity">
+        </activity>
         </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
