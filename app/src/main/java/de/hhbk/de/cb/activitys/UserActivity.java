@@ -1,4 +1,4 @@
-package de.hhbk.de.cb;
+package de.hhbk.de.cb.activitys;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+
+import de.hhbk.de.cb.other.DropdownMenu;
+import de.hhbk.de.cb.controller.LoginController;
+import de.hhbk.de.cb.R;
+import de.hhbk.de.cb.model.User;
+import de.hhbk.de.cb.controller.UserActivityController;
 
 /**
  * Created by admin on 22.09.15.

@@ -1,4 +1,4 @@
-package de.hhbk.de.cb;
+package de.hhbk.de.cb.activitys;
 
 
 import android.os.Bundle;
@@ -15,6 +15,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.hhbk.de.cb.other.DropdownMenu;
+import de.hhbk.de.cb.model.Pupil;
+import de.hhbk.de.cb.controller.PupilListController;
+import de.hhbk.de.cb.R;
+import de.hhbk.de.cb.model.Schoolclass;
+import de.hhbk.de.cb.other.debug;
+import de.hhbk.de.cb.other.strings;
+
 /**
  * Created by admin on 22.09.15.
 */
@@ -22,6 +30,7 @@ public class PupilListActivity extends ListActivity {
     private Map<String, Schoolclass> schoolclasses;
     private PupilListController controller;
     private Button button;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +55,6 @@ public class PupilListActivity extends ListActivity {
             Schoolclass theChosenOne = schoolclasses.get(item);
             Toast.makeText(this, item +theChosenOne.getID()+ " !", Toast.LENGTH_LONG).show();
             showSchoolClass(theChosenOne);
-        } else {
-            debug.getInt().message("ELSE");
         }
     }
 
@@ -67,7 +74,7 @@ public class PupilListActivity extends ListActivity {
     }
 
     /*
-    * Aendert den Inhalt der ListView von Klassen auf Schueler sowie den "Zurueck"Button zu einem "Speichern" Button. 
+    * Aendert den Inhalt der ListView von Klassen auf Schueler sowie den "Zurueck"Button zu einem "Speichern" Button.
      */
     private void showSchoolClass(Schoolclass sclass) {
         String[] values = new String[sclass.getNumberOfPupils()];

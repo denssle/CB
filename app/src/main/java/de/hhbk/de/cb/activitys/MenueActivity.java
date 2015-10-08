@@ -1,4 +1,4 @@
-package de.hhbk.de.cb;
+package de.hhbk.de.cb.activitys;
 
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -7,6 +7,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import de.hhbk.de.cb.other.DropdownMenu;
+import de.hhbk.de.cb.controller.LoginController;
+import de.hhbk.de.cb.R;
+import de.hhbk.de.cb.model.User;
 
 /**
  * Created by admin on 10.09.15.

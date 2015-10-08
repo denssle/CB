@@ -1,4 +1,4 @@
-package de.hhbk.de.cb;
+package de.hhbk.de.cb.model;
 
 import java.util.ArrayList;
 import java.util.List;

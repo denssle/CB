@@ -1,7 +1,13 @@
-package de.hhbk.de.cb;
+package de.hhbk.de.cb.other;
 
 import android.app.Activity;
 import android.content.Intent;
+
+import de.hhbk.de.cb.R;
+import de.hhbk.de.cb.activitys.PupilListActivity;
+import de.hhbk.de.cb.activitys.SettingsActivity;
+import de.hhbk.de.cb.activitys.UserActivity;
+import de.hhbk.de.cb.other.debug;
 
 /**
  * Created by admin on 22.09.15.

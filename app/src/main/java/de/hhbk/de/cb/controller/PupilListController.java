@@ -1,10 +1,14 @@
-package de.hhbk.de.cb;
+package de.hhbk.de.cb.controller;
 
-import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+
+import de.hhbk.de.cb.R;
+import de.hhbk.de.cb.activitys.MenueActivity;
+import de.hhbk.de.cb.activitys.PupilListActivity;
+import de.hhbk.de.cb.other.debug;
+import de.hhbk.de.cb.other.strings;
 
 /**
  * Created by dominik on 07.10.15.

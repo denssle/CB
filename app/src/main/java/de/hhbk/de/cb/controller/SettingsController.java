@@ -1,6 +1,9 @@
-package de.hhbk.de.cb;
+package de.hhbk.de.cb.controller;
 
 import android.view.View;
+
+import de.hhbk.de.cb.R;
+import de.hhbk.de.cb.other.debug;
 
 /**
  * Created by admin on 05.10.2015.

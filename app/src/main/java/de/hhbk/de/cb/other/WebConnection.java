@@ -1,4 +1,4 @@
-package de.hhbk.de.cb;
+package de.hhbk.de.cb.other;
 
 import android.os.AsyncTask;
 import org.json.JSONObject;
@@ -13,11 +13,13 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hhbk.de.cb.other.debug;
+
 /**
  * Created by admin on 17.09.15.
  */
 
-class WebConnection extends AsyncTask<String, Void, JSONObject> {
+public class WebConnection extends AsyncTask<String, Void, JSONObject> {
     // String: Logindaten als String Parameter uebergeben
     // Void: Keine Fortschrittsanzeige
     // JSONObject: Rueckgabe der Datenbankanfrage als JSON Objekt
@@ -86,7 +88,7 @@ class WebConnection extends AsyncTask<String, Void, JSONObject> {
             }
             map.put(key, value);
         }
-        debug.getInt().message("Kurz: "+map);
+        debug.getInt().message("Kurz: " + map);
         return new JSONObject(map);
     }
 

@@ -1,9 +1,12 @@
-package de.hhbk.de.cb;
+package de.hhbk.de.cb.activitys;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+
+import de.hhbk.de.cb.controller.LoginController;
+import de.hhbk.de.cb.R;
 
 public class LoginActivity extends AppCompatActivity {
 

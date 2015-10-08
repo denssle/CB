@@ -1,7 +1,11 @@
-package de.hhbk.de.cb;
+package de.hhbk.de.cb.controller;
 
 import android.content.Intent;
 import android.view.View;
+
+import de.hhbk.de.cb.R;
+import de.hhbk.de.cb.activitys.UpdateUserActivity;
+import de.hhbk.de.cb.activitys.UserActivity;
 
 /**
  * Created by admin on 29.09.15.

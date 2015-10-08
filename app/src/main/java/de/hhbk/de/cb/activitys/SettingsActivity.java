@@ -1,10 +1,13 @@
-package de.hhbk.de.cb;
+package de.hhbk.de.cb.activitys;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import de.hhbk.de.cb.other.DropdownMenu;
+import de.hhbk.de.cb.R;
 
 /**
  * Created by admin on 18.09.15.

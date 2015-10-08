@@ -1,4 +1,4 @@
-package de.hhbk.de.cb;
+package de.hhbk.de.cb.controller;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -7,6 +7,11 @@ import android.view.*;
 import android.widget.Toast;
 import android.content.Intent;
 import org.json.JSONObject;
+
+import de.hhbk.de.cb.model.User;
+import de.hhbk.de.cb.other.WebConnection;
+import de.hhbk.de.cb.activitys.MenueActivity;
+import de.hhbk.de.cb.other.debug;
 
 /**
  * Created by admin on 10.09.15.

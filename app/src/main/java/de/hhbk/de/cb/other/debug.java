@@ -1,4 +1,4 @@
-package de.hhbk.de.cb;
+package de.hhbk.de.cb.other;
 
 /**
  * Created by admin on 17.09.15.

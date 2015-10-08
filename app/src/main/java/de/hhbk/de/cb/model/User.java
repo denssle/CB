@@ -1,4 +1,4 @@
-package de.hhbk.de.cb;
+package de.hhbk.de.cb.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.UUID;
