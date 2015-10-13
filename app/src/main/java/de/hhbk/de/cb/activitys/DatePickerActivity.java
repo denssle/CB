@@ -5,8 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.DatePicker;
 
 import de.hhbk.de.cb.R;
+import de.hhbk.de.cb.controller.DatePickerController;
 import de.hhbk.de.cb.other.DropdownMenu;
 
 /**
@@ -17,6 +20,10 @@ public class DatePickerActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datepicker);
+        DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
+        DatePickerController controller = new DatePickerController(this, datePicker);
+        Button button = (Button) findViewById(R.id.datePickerButton);
+        button.setOnClickListener(controller);
     }
 
     @Override
