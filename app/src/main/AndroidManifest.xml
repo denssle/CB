@@ -35,6 +35,12 @@
         <activity
             android:name=".activitys.DatePickerActivity">
         </activity>
+        <activity
+            android:name=".activitys.SchoolClassPickerActivity">
+        </activity>
+        <activity
+            android:name=".activitys.SchoolSubjectPickerActivity">
+        </activity>
         </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

@@ -15,4 +15,5 @@
     <string name="update">Bearbeiten</string>
     <string name="content">Inhalt</string>
     <string name="back">Zurück</string>
+    <string name="chooseSubject">Schulfächer</string>
 </resources>
