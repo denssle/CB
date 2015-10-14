@@ -11,6 +11,7 @@ public class SchoolClass {
     private UUID id;
     private String classname;
     private List<Pupil> pupils;
+    private List<SchoolSubject> subjects;
 
     public SchoolClass(String classname) {
         this.id = UUID.randomUUID();

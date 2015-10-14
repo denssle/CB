@@ -22,6 +22,7 @@ public class SchoolClassPickerActivity extends AppCompatActivity {
         dateText.setText(DatePickerController.getDate());
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
