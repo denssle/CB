@@ -16,7 +16,6 @@ import de.hhbk.de.cb.activitys.PupilListActivity;
 import de.hhbk.de.cb.activitys.SchoolClassPickerActivity;
 import de.hhbk.de.cb.activitys.SchoolSubjectPickerActivity;
 import de.hhbk.de.cb.model.SchoolClass;
-import de.hhbk.de.cb.model.SchoolSubject;
 import de.hhbk.de.cb.other.DummyDataLand;
 import de.hhbk.de.cb.other.debug;
 
@@ -24,21 +23,19 @@ import de.hhbk.de.cb.other.debug;
  * Created by dominik on 14.10.15.
  */
 @SuppressLint("ValidFragment")
-public class SchoolClassPickerController extends ListFragment {
-    private String[] numbers_text;
+public class SchoolSubjectPickerController extends ListFragment {
+    private String[] values;
     private Activity activity;
-    private static String schoolClass;
 
     @SuppressLint("ValidFragment")
-    public SchoolClassPickerController(SchoolClassPickerActivity activity) {
-        this.numbers_text = DummyDataLand.getInt().getValues();//Hier muss dann ein DB Anschluss hin!
+    public SchoolSubjectPickerController(SchoolSubjectPickerActivity activity) {
+        SchoolClass schoolClass = DummyDataLand.getInt().getSchoolClassByName(SchoolClassPickerController.getSchoolClass()); //Hier muss dann ein DB Anschluss hin!
+        this.values = schoolClass.getSubjectsAsString();
         this.activity = activity;
     }
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        debug.getInt().message("Simple List Fragment: "+(numbers_text[(int) id]));
-        schoolClass = numbers_text[(int) id];
-        activity.startActivity(new Intent(activity, SchoolSubjectPickerActivity.class));
+        activity.startActivity(new Intent(activity, PupilListActivity.class));
     }
 
     @Override
@@ -46,12 +43,9 @@ public class SchoolClassPickerController extends ListFragment {
         super.onCreate(savedInstanceState);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 inflater.getContext(), R.layout.list_entry, R.id.shoolClassEntry,
-                numbers_text);
+                values);
         setListAdapter(adapter);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
-    public static String getSchoolClass() {
-        return schoolClass;
-    }
 }

@@ -60,4 +60,12 @@ public class SchoolClass {
     public List<SchoolSubject> getSubjects() {
         return subjects;
     }
+
+    public String[] getSubjectsAsString() {
+        String[] result = new String[subjects.size()];
+        for (int i=0; i<result.length; i++) {
+            result[i] = subjects.get(i).getName();
+        }
+        return result;
+    }
 }
