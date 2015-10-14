@@ -6,6 +6,8 @@ import java.util.UUID;
 
 /**
  * Created by admin on 29.09.15.
+ *
+ * Hält die Schüler und die Fächer (subjects) der Klasse.
  */
 public class SchoolClass {
     private UUID id;
@@ -17,6 +19,7 @@ public class SchoolClass {
         this.id = UUID.randomUUID();
         this.classname = classname;
         this.pupils = new ArrayList<Pupil>();
+        this.subjects = new ArrayList<SchoolSubject>();
     }
     public UUID getID() {
         return id;
@@ -48,5 +51,13 @@ public class SchoolClass {
             values[i] = pupils.get(i).getForname() +" "+ pupils.get(i).getLastname();
         }
         return values;
+    }
+
+    public void addSchoolSubject(SchoolSubject subject) {
+        this.subjects.add(subject);
+    }
+
+    public List<SchoolSubject> getSubjects() {
+        return subjects;
     }
 }

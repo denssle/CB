@@ -7,12 +7,12 @@ package de.hhbk.de.cb.model;
  */
 public class Lesson {
     private String date;
-    private Lesson lesson;
+    private SchoolSubject subject;
     private SchoolClass schoolClass;
 
-    public Lesson(String date, Lesson lesson, SchoolClass schoolClass) {
+    public Lesson(String date, Lesson lesson, SchoolSubject subject, SchoolClass schoolClass) {
         this.date = date;
-        this.lesson = lesson;
+        this.subject = subject;
         this.schoolClass = schoolClass;
     }
 }

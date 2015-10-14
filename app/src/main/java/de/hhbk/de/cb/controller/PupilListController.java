@@ -28,10 +28,8 @@ public class PupilListController implements View.OnClickListener {
         if (id == R.id.pupillistButton) {
             debug.getInt().message("Controll:" + button.getText());
             if(button.getText().equals(strings.back)) {
-                activity.startActivity(new Intent(activity, MenueActivity.class));
             }
             if(button.getText().equals(strings.save)) {
-                activity.backToTheRoot();
             }
         }
     }
