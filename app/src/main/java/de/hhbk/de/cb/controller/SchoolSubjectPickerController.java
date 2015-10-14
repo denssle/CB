@@ -26,6 +26,7 @@ import de.hhbk.de.cb.other.debug;
 public class SchoolSubjectPickerController extends ListFragment {
     private String[] values;
     private Activity activity;
+    private static String subject;
 
     @SuppressLint("ValidFragment")
     public SchoolSubjectPickerController(SchoolSubjectPickerActivity activity) {
@@ -46,6 +47,9 @@ public class SchoolSubjectPickerController extends ListFragment {
                 values);
         setListAdapter(adapter);
         return super.onCreateView(inflater, container, savedInstanceState);
+    }
+    public static String getSubject() {
+        return subject;
     }
 
 }

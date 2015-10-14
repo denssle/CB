@@ -1,36 +1,51 @@
 package de.hhbk.de.cb.controller;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ListFragment;
 import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import de.hhbk.de.cb.R;
 import de.hhbk.de.cb.activitys.MenueActivity;
 import de.hhbk.de.cb.activitys.PupilListActivity;
+import de.hhbk.de.cb.model.SchoolClass;
+import de.hhbk.de.cb.other.DummyDataLand;
 import de.hhbk.de.cb.other.debug;
-import de.hhbk.de.cb.other.strings;
 
 /**
- * Created by dominik on 07.10.15.
+ * Created by dominik on 14.10.15.
  */
-public class PupilListController implements View.OnClickListener {
-    private PupilListActivity activity;
-    private Button button;
+@SuppressLint("ValidFragment")
+public class PupilListController extends ListFragment {
+    private String[] values;
+    private Activity activity;
 
-    public PupilListController(PupilListActivity activity, Button button) {
+    @SuppressLint("ValidFragment")
+    public PupilListController(PupilListActivity activity) {
         this.activity = activity;
-        this.button = button;
+        SchoolClass schoolClass = DummyDataLand.getInt().getSchoolClassByName(SchoolClassPickerController.getSchoolClass()); //Hier muss dann ein DB Anschluss hin!
+        this.values = schoolClass.getNameOfPupils();
+    }
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+
+        //activity.startActivity(new Intent(activity, MenueActivity.class));
     }
 
     @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        if (id == R.id.pupillistButton) {
-            debug.getInt().message("Controll:" + button.getText());
-            if(button.getText().equals(strings.back)) {
-            }
-            if(button.getText().equals(strings.save)) {
-            }
-        }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                inflater.getContext(), R.layout.list_entry, R.id.shoolClassEntry,
+                values);
+        setListAdapter(adapter);
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
+
 }
