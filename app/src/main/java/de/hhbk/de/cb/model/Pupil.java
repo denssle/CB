@@ -1,5 +1,6 @@
 package de.hhbk.de.cb.model;
 
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -9,7 +10,8 @@ public class Pupil {
     UUID id;
     private String forname;
     private String lastname;
-    private Schoolclass schoolclass;
+    private SchoolClass schoolClass;
+    private Map<Lesson, Boolean> presenceList;
 
     public Pupil() {
         this.id = UUID.randomUUID();
@@ -31,12 +33,12 @@ public class Pupil {
         this.lastname = lastname;
     }
 
-    public Schoolclass getSchoolclass() {
-        return schoolclass;
+    public SchoolClass getSchoolClass() {
+        return schoolClass;
     }
 
-    public void setSchoolclass(Schoolclass schoolclass) {
-        this.schoolclass = schoolclass;
+    public void setSchoolClass(SchoolClass schoolClass) {
+        this.schoolClass = schoolClass;
     }
 
     public UUID getId() {

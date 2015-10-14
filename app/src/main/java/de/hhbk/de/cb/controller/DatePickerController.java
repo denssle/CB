@@ -3,14 +3,9 @@ package de.hhbk.de.cb.controller;
 import android.content.Intent;
 import android.view.View;
 import android.widget.DatePicker;
-
 import java.util.Calendar;
-import java.util.Date;
-
 import de.hhbk.de.cb.activitys.DatePickerActivity;
-import de.hhbk.de.cb.activitys.PupilListActivity;
-import de.hhbk.de.cb.activitys.UserActivity;
-import de.hhbk.de.cb.other.debug;
+import de.hhbk.de.cb.activitys.SchoolClassPickerActivity;
 
 /**
  * Created by dominik on 13.10.15.
@@ -28,7 +23,7 @@ public class DatePickerController implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         makeDate();
-        activity.startActivity(new Intent(activity, PupilListActivity.class));
+        activity.startActivity(new Intent(activity, SchoolClassPickerActivity.class));
     }
 
     private void makeDate() {

@@ -7,12 +7,12 @@ import java.util.UUID;
 /**
  * Created by admin on 29.09.15.
  */
-public class Schoolclass {
+public class SchoolClass {
     private UUID id;
     private String classname;
     private List<Pupil> pupils;
 
-    public Schoolclass(String classname) {
+    public SchoolClass(String classname) {
         this.id = UUID.randomUUID();
         this.classname = classname;
         this.pupils = new ArrayList<Pupil>();
@@ -38,5 +38,14 @@ public class Schoolclass {
 
     public int getNumberOfPupils() {
         return pupils.size();
+    }
+
+    public String[] getNameOfPupils() {
+        String[] values = new String[this.getNumberOfPupils()];
+        List<Pupil> pupils = this.getPupils();
+        for(int i = 0; i<this.getNumberOfPupils(); i++) {
+            values[i] = pupils.get(i).getForname() +" "+ pupils.get(i).getLastname();
+        }
+        return values;
     }
 }
