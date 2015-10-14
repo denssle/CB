@@ -10,11 +10,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.hhbk.de.cb.controller.DatePickerController;
 import de.hhbk.de.cb.other.DropdownMenu;
 import de.hhbk.de.cb.model.Pupil;
 import de.hhbk.de.cb.controller.PupilListController;
@@ -46,6 +50,9 @@ public class PupilListActivity extends ListActivity {
         this.controller = new PupilListController(this, button);
         button.setOnClickListener(controller);
         button.setText(strings.back);
+
+        TextView dateText = (TextView) findViewById(R.id.pupillistDate);
+        dateText.setText(DatePickerController.getDate());
     }
 
     @Override

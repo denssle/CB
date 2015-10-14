@@ -1,5 +1,6 @@
 package de.hhbk.de.cb.controller;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.DatePicker;
 
@@ -7,6 +8,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 import de.hhbk.de.cb.activitys.DatePickerActivity;
+import de.hhbk.de.cb.activitys.PupilListActivity;
+import de.hhbk.de.cb.activitys.UserActivity;
 import de.hhbk.de.cb.other.debug;
 
 /**
@@ -15,18 +18,31 @@ import de.hhbk.de.cb.other.debug;
 public class DatePickerController implements View.OnClickListener {
     private DatePickerActivity activity;
     private DatePicker picker;
+    private static String date;
+
     public DatePickerController(DatePickerActivity pickerActivity, DatePicker datePicker) {
         this.activity = pickerActivity;
         this.picker = datePicker;
     }
+
     @Override
     public void onClick(View v) {
-        debug.getInt().message("DatePicker: Day of Month: " + picker.getDayOfMonth() + " Month: " + picker.getMonth() + " Year: " + picker.getYear());
+        makeDate();
+        activity.startActivity(new Intent(activity, PupilListActivity.class));
+    }
+
+    private void makeDate() {
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.YEAR, picker.getYear());
         calendar.set(Calendar.MONTH, picker.getMonth());
         calendar.set(Calendar.DAY_OF_MONTH, picker.getDayOfMonth());
-        Date dateRepresentation = calendar.getTime();
-        debug.getInt().message("Date: "+dateRepresentation.toString());
+        String year = Integer.toString(calendar.get(Calendar.YEAR));
+        String month = Integer.toString(calendar.get(Calendar.MONTH)+1);
+        String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
+        date = day+ "." + month +"." + year;
+    }
+
+    public static String getDate() {
+        return date;
     }
 }
