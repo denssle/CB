@@ -9,7 +9,8 @@ import android.view.MenuItem;
 
 import de.hhbk.de.cb.R;
 import de.hhbk.de.cb.controller.PupilListController;
-import de.hhbk.de.cb.other.DropdownMenu;
+import de.hhbk.de.cb.menus.DropdownMenu;
+import de.hhbk.de.cb.other.debug;
 
 /**
  * Created by dominik on 14.10.15.
@@ -29,7 +30,7 @@ public class PupilListActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.dropdown_menu, menu);
+        inflater.inflate(R.menu.dropdown_menu_pupillist, menu);
         return true;
     }
 
@@ -37,6 +38,10 @@ public class PupilListActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         DropdownMenu menu = new DropdownMenu();
         int id = item.getItemId();
-        return menu.manageMenu(id, this);
+        return menu.pupilListMenu(id, this);
+    }
+
+    public void savePresence() {
+        debug.getInt().message("Speichere Anwesenheit. Nicht!");
     }
 }

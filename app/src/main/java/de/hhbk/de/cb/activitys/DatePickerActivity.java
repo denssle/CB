@@ -10,7 +10,7 @@ import android.widget.DatePicker;
 
 import de.hhbk.de.cb.R;
 import de.hhbk.de.cb.controller.DatePickerController;
-import de.hhbk.de.cb.other.DropdownMenu;
+import de.hhbk.de.cb.menus.DropdownMenu;
 
 /**
  * Created by dominik on 08.10.15.
@@ -29,7 +29,7 @@ public class DatePickerActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.dropdown_menu, menu);
+        inflater.inflate(R.menu.dropdown_menu_standard, menu);
         return true;
     }
 

@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
-import de.hhbk.de.cb.other.DropdownMenu;
+import de.hhbk.de.cb.menus.DropdownMenu;
 import de.hhbk.de.cb.controller.LoginController;
 import de.hhbk.de.cb.R;
 import de.hhbk.de.cb.controller.UpdateUserController;
@@ -60,7 +60,7 @@ public class UpdateUserActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.dropdown_menu, menu);
+        inflater.inflate(R.menu.dropdown_menu_standard, menu);
         return true;
     }
 

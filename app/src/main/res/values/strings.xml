@@ -17,6 +17,7 @@
     <string name="back">Zurück</string>
     <string name="chooseSubject">Schulfächer</string>
     <string name="continueButton">Weiter</string>
+    <string name="save">Speichern</string>
 
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>

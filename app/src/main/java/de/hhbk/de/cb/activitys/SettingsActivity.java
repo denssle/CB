@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import de.hhbk.de.cb.other.DropdownMenu;
+import de.hhbk.de.cb.menus.DropdownMenu;
 import de.hhbk.de.cb.R;
 
 /**
@@ -21,7 +21,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.dropdown_menu, menu);
+        inflater.inflate(R.menu.dropdown_menu_standard, menu);
         return true;
     }
 

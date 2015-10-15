@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import de.hhbk.de.cb.R;
 import de.hhbk.de.cb.activitys.MenueActivity;
@@ -34,7 +35,8 @@ public class PupilListController extends ListFragment {
     }
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        //activity.startActivity(new Intent(activity, MenueActivity.class));
+        //activity.startActivity(new Intent(activity, MenueActivity.class))
+        debug.getInt().message("OnListenItemClick: Pos.: "+position+" Id: "+id+" V.id: "+v.getId());
     }
 
     @Override

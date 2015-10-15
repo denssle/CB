@@ -8,7 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import de.hhbk.de.cb.R;
 import de.hhbk.de.cb.controller.SchoolClassPickerController;
-import de.hhbk.de.cb.other.DropdownMenu;
+import de.hhbk.de.cb.menus.DropdownMenu;
 
 /**
  * Created by dominik on 14.10.15.
@@ -29,7 +29,7 @@ public class SchoolClassPickerActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.dropdown_menu, menu);
+        inflater.inflate(R.menu.dropdown_menu_standard, menu);
         return true;
     }
 
