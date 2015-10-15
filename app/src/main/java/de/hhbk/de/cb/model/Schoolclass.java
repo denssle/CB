@@ -68,4 +68,14 @@ public class SchoolClass {
         }
         return result;
     }
+
+    public Pupil getPupilByFullName(String name) {
+        for(Pupil pupil : pupils) {
+            String pname = pupil.getForname()+" "+pupil.getLastname();
+            if(pname.equals(name)) {
+                return pupil;
+            }
+        }
+        return null;
+    }
 }

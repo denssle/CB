@@ -12,9 +12,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import de.hhbk.de.cb.R;
 import de.hhbk.de.cb.activitys.MenueActivity;
 import de.hhbk.de.cb.activitys.PupilListActivity;
+import de.hhbk.de.cb.model.Pupil;
 import de.hhbk.de.cb.model.SchoolClass;
 import de.hhbk.de.cb.other.DummyDataLand;
 import de.hhbk.de.cb.other.debug;
@@ -26,26 +30,46 @@ import de.hhbk.de.cb.other.debug;
 public class PupilListController extends ListFragment {
     private String[] values;
     private Activity activity;
+    private Map<Pupil,Boolean> presenceMap;
+    private SchoolClass schoolClass;
+    private ArrayAdapter<String> adapter;
 
     @SuppressLint("ValidFragment")
     public PupilListController(PupilListActivity activity) {
         this.activity = activity;
-        SchoolClass schoolClass = DummyDataLand.getInt().getSchoolClassByName(SchoolClassPickerController.getSchoolClass()); //Hier muss dann ein DB Anschluss hin!
+        this.presenceMap = new HashMap<>();
+        this.schoolClass = DummyDataLand.getInt().getSchoolClassByName(SchoolClassPickerController.getSchoolClass()); //Hier muss dann ein DB Anschluss hin!
+        for (Pupil pupil : schoolClass.getPupils()) {
+            this.presenceMap.put(pupil,true);
+        }
         this.values = schoolClass.getNameOfPupils();
     }
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         //activity.startActivity(new Intent(activity, MenueActivity.class))
-        debug.getInt().message("OnListenItemClick: Pos.: "+position+" Id: "+id+" V.id: "+v.getId());
+        debug.getInt().message("OnListenItemClick: Pos.: " + position + " Name: " + values[position]);
+        Pupil pupil = schoolClass.getPupilByFullName(adapter.getItem(position));
+        l.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        l.setItemChecked(position, changePresence(pupil));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                inflater.getContext(), R.layout.pupil_entry, R.id.pubilEntryText, values);
+        adapter = new ArrayAdapter<String>(
+                inflater.getContext(), android.R.layout.simple_list_item_multiple_choice, values);
         setListAdapter(adapter);
+        getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
+    private boolean changePresence(Pupil pupil) {
+        if(presenceMap.get(pupil)) {
+            presenceMap.put(pupil,false);
+            return false;
+        } else {
+            presenceMap.put(pupil,true);
+            return true;
+        }
+    }
 }
