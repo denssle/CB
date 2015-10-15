@@ -6,27 +6,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import de.hhbk.de.cb.R;
-import de.hhbk.de.cb.controller.DatePickerController;
-import de.hhbk.de.cb.controller.SchoolClassPickerController;
-import de.hhbk.de.cb.controller.SchoolSubjectPickerController;
-import de.hhbk.de.cb.model.SchoolClass;
+import de.hhbk.de.cb.controller.SubjectPickerController;
 import de.hhbk.de.cb.other.DropdownMenu;
-import de.hhbk.de.cb.other.DummyDataLand;
 
 /**
  * Created by dominik on 14.10.15.
  */
-public class SchoolSubjectPickerActivity extends AppCompatActivity {
+public class SubjectPickerActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_schoolsubjectpicker);
+        setContentView(R.layout.activity_subjectpicker);
 
         FragmentManager fm = getFragmentManager();
         if (fm.findFragmentById(android.R.id.content) == null) {
-            SchoolSubjectPickerController list = new SchoolSubjectPickerController(this);
+            SubjectPickerController list = new SubjectPickerController(this);
             fm.beginTransaction().add(android.R.id.content, list).commit();
         }
     }

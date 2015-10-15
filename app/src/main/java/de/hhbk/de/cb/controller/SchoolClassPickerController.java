@@ -12,11 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import de.hhbk.de.cb.R;
-import de.hhbk.de.cb.activitys.PupilListActivity;
 import de.hhbk.de.cb.activitys.SchoolClassPickerActivity;
-import de.hhbk.de.cb.activitys.SchoolSubjectPickerActivity;
-import de.hhbk.de.cb.model.SchoolClass;
-import de.hhbk.de.cb.model.SchoolSubject;
+import de.hhbk.de.cb.activitys.SubjectPickerActivity;
 import de.hhbk.de.cb.other.DummyDataLand;
 import de.hhbk.de.cb.other.debug;
 
@@ -38,7 +35,7 @@ public class SchoolClassPickerController extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         debug.getInt().message("Simple List Fragment: "+(numbers_text[(int) id]));
         schoolClass = numbers_text[(int) id];
-        activity.startActivity(new Intent(activity, SchoolSubjectPickerActivity.class));
+        activity.startActivity(new Intent(activity, SubjectPickerActivity.class));
     }
 
     @Override

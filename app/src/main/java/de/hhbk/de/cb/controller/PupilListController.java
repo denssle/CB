@@ -34,7 +34,6 @@ public class PupilListController extends ListFragment {
     }
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-
         //activity.startActivity(new Intent(activity, MenueActivity.class));
     }
 
@@ -42,8 +41,7 @@ public class PupilListController extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                inflater.getContext(), R.layout.list_entry, R.id.shoolClassEntry,
-                values);
+                inflater.getContext(), R.layout.pupil_entry, R.id.pubilEntryText, values);
         setListAdapter(adapter);
         return super.onCreateView(inflater, container, savedInstanceState);
     }

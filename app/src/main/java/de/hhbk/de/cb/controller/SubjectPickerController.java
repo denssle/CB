@@ -13,23 +13,21 @@ import android.widget.ListView;
 
 import de.hhbk.de.cb.R;
 import de.hhbk.de.cb.activitys.PupilListActivity;
-import de.hhbk.de.cb.activitys.SchoolClassPickerActivity;
-import de.hhbk.de.cb.activitys.SchoolSubjectPickerActivity;
+import de.hhbk.de.cb.activitys.SubjectPickerActivity;
 import de.hhbk.de.cb.model.SchoolClass;
 import de.hhbk.de.cb.other.DummyDataLand;
-import de.hhbk.de.cb.other.debug;
 
 /**
  * Created by dominik on 14.10.15.
  */
 @SuppressLint("ValidFragment")
-public class SchoolSubjectPickerController extends ListFragment {
+public class SubjectPickerController extends ListFragment {
     private String[] values;
     private Activity activity;
     private static String subject;
 
     @SuppressLint("ValidFragment")
-    public SchoolSubjectPickerController(SchoolSubjectPickerActivity activity) {
+    public SubjectPickerController(SubjectPickerActivity activity) {
         SchoolClass schoolClass = DummyDataLand.getInt().getSchoolClassByName(SchoolClassPickerController.getSchoolClass()); //Hier muss dann ein DB Anschluss hin!
         this.values = schoolClass.getSubjectsAsString();
         this.activity = activity;
