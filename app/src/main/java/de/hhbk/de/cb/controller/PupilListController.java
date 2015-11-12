@@ -67,8 +67,8 @@ public class PupilListController extends ListFragment {
     public void savePresence() {
         String date = DatePickerController.getDate();
         SchoolSubject subject = SubjectPickerController.getSubject();
-        debug.getInt().message("Date: "+date+" Subject: "+subject.getName()+" Klasse: "+schoolClass.getClassname());
+        debug.getInt().message("Date: "+date+" Subject: "+subject.getName()+" Klasse: "+schoolClass.getClassname() + " Anwesenheit: " + presenceMap.keySet());
         Lesson lesson = new Lesson(date, subject, schoolClass, presenceMap);
-        DummyDataLand.saveLesson(lesson); //Hier muss dann ein DB Anschluss hin.
+        DummyDataLand.saveLesson(lesson); //TODO
     }
 }

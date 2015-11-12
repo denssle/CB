@@ -15,7 +15,7 @@ import de.hhbk.de.cb.model.SchoolSubject;
 public class DummyDataLand {
     private Map<String, SchoolClass> schoolClassMap;
     private static DummyDataLand ourInstance = new DummyDataLand();
-    private static Map<String,Lesson> lessonMap;
+    private static Map<String,Lesson> lessonMap = new HashMap<>();
     private DummyDataLand() {
         schoolClassMap = buildClasses();
     }

@@ -24,7 +24,7 @@ public class PupilListActivity extends AppCompatActivity {
 
         FragmentManager fm = getFragmentManager();
         if (fm.findFragmentById(android.R.id.content) == null) {
-            pupilListController = new PupilListController(this);
+            pupilListController = new PupilListController();
             fm.beginTransaction().add(android.R.id.content, pupilListController).commit();
         }
     }
@@ -50,7 +50,7 @@ public class PupilListActivity extends AppCompatActivity {
     }
 
     public void savePresence() {
-        toastToast("Speichere Anwesenheit. Nicht!");
+        toastToast("Anwesenheit gespeichert.");
         pupilListController.savePresence();
     }
 }
