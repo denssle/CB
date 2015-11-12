@@ -1,25 +1,21 @@
 package de.hhbk.de.cb.controller;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.ListFragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import de.hhbk.de.cb.R;
-import de.hhbk.de.cb.activitys.MenueActivity;
-import de.hhbk.de.cb.activitys.PupilListActivity;
+import de.hhbk.de.cb.model.Lesson;
 import de.hhbk.de.cb.model.Pupil;
 import de.hhbk.de.cb.model.SchoolClass;
+import de.hhbk.de.cb.model.SchoolSubject;
 import de.hhbk.de.cb.other.DummyDataLand;
 import de.hhbk.de.cb.other.debug;
 
@@ -29,14 +25,12 @@ import de.hhbk.de.cb.other.debug;
 @SuppressLint("ValidFragment")
 public class PupilListController extends ListFragment {
     private String[] values;
-    private Activity activity;
     private Map<Pupil,Boolean> presenceMap;
     private SchoolClass schoolClass;
     private ArrayAdapter<String> adapter;
 
     @SuppressLint("ValidFragment")
-    public PupilListController(PupilListActivity activity) {
-        this.activity = activity;
+    public PupilListController() {
         this.presenceMap = new HashMap<>();
         this.schoolClass = DummyDataLand.getInt().getSchoolClassByName(SchoolClassPickerController.getSchoolClass()); //Hier muss dann ein DB Anschluss hin!
         for (Pupil pupil : schoolClass.getPupils()) {
@@ -56,20 +50,25 @@ public class PupilListController extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        adapter = new ArrayAdapter<String>(
+        adapter = new ArrayAdapter<>(
                 inflater.getContext(), android.R.layout.simple_list_item_multiple_choice, values);
         setListAdapter(adapter);
-        getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     private boolean changePresence(Pupil pupil) {
         if(presenceMap.get(pupil)) {
             presenceMap.put(pupil,false);
-            return false;
         } else {
             presenceMap.put(pupil,true);
-            return true;
-        }
+        } return presenceMap.get(pupil);
+    }
+
+    public void savePresence() {
+        String date = DatePickerController.getDate();
+        SchoolSubject subject = SubjectPickerController.getSubject();
+        debug.getInt().message("Date: "+date+" Subject: "+subject.getName()+" Klasse: "+schoolClass.getClassname());
+        Lesson lesson = new Lesson(date, subject, schoolClass, presenceMap);
+        DummyDataLand.saveLesson(lesson); //Hier muss dann ein DB Anschluss hin.
     }
 }

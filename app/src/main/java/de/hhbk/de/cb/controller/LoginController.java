@@ -54,7 +54,7 @@ public class LoginController implements View.OnClickListener {
     }
 
     private Boolean onlineCheck(String name, String password, View view) {
-        JSONObject result = null;
+        JSONObject result;
         AsyncTask.Status status;
         try
         {

@@ -15,7 +15,7 @@ import de.hhbk.de.cb.model.SchoolSubject;
 public class DummyDataLand {
     private Map<String, SchoolClass> schoolClassMap;
     private static DummyDataLand ourInstance = new DummyDataLand();
-
+    private static Map<String,Lesson> lessonMap;
     private DummyDataLand() {
         schoolClassMap = buildClasses();
     }
@@ -74,9 +74,12 @@ public class DummyDataLand {
     }
     public SchoolClass getSchoolClassByName(String name) {
         if (schoolClassMap.containsKey(name)) {
-            SchoolClass theChosenOne = schoolClassMap.get(name);
-            return theChosenOne;
+            return schoolClassMap.get(name);
         }
         return null;
+    }
+
+    public static void saveLesson(Lesson lesson) {
+        lessonMap.put(lesson.getDate(),lesson);
     }
 }

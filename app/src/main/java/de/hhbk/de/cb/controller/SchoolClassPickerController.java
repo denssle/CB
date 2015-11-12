@@ -41,7 +41,7 @@ public class SchoolClassPickerController extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 inflater.getContext(), R.layout.list_entry, R.id.shoolClassEntry,
                 numbers_text);
         setListAdapter(adapter);

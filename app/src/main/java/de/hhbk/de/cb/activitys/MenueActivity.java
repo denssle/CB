@@ -17,7 +17,6 @@ import de.hhbk.de.cb.model.User;
  * Created by admin on 10.09.15.
  */
 public class MenueActivity extends AppCompatActivity {
-    private User currentUser;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,9 +25,9 @@ public class MenueActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         setContentView(R.layout.activity_menu);
-        currentUser = LoginController.getUser();
+        User currentUser = LoginController.getUser();
         TextView textView = (TextView) findViewById(R.id.textUserName);
-        textView.setText(currentUser.getForname()+" "+currentUser.getLastname());
+        textView.setText(currentUser.getForname()+" "+ currentUser.getLastname());
     }
 
     @Override

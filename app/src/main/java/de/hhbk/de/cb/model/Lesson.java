@@ -1,5 +1,7 @@
 package de.hhbk.de.cb.model;
 
+import java.util.Map;
+
 /**
  * Created by dominik on 13.10.15.
  *
@@ -9,10 +11,44 @@ public class Lesson {
     private String date;
     private SchoolSubject subject;
     private SchoolClass schoolClass;
+    private Map<Pupil, Boolean> presenceMap;
 
-    public Lesson(String date, Lesson lesson, SchoolSubject subject, SchoolClass schoolClass) {
+    public Lesson(String date, SchoolSubject subject, SchoolClass schoolClass, Map<Pupil, Boolean> presenceMap) {
         this.date = date;
         this.subject = subject;
         this.schoolClass = schoolClass;
+        this.presenceMap = presenceMap;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public SchoolSubject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(SchoolSubject subject) {
+        this.subject = subject;
+    }
+
+    public SchoolClass getSchoolClass() {
+        return schoolClass;
+    }
+
+    public void setSchoolClass(SchoolClass schoolClass) {
+        this.schoolClass = schoolClass;
+    }
+
+    public Map<Pupil, Boolean> getPresenceMap() {
+        return presenceMap;
+    }
+
+    public void setPresenceMap(Map<Pupil, Boolean> presenceMap) {
+        this.presenceMap = presenceMap;
     }
 }

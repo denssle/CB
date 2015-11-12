@@ -15,6 +15,7 @@ import de.hhbk.de.cb.R;
 import de.hhbk.de.cb.activitys.PupilListActivity;
 import de.hhbk.de.cb.activitys.SubjectPickerActivity;
 import de.hhbk.de.cb.model.SchoolClass;
+import de.hhbk.de.cb.model.SchoolSubject;
 import de.hhbk.de.cb.other.DummyDataLand;
 
 /**
@@ -24,30 +25,32 @@ import de.hhbk.de.cb.other.DummyDataLand;
 public class SubjectPickerController extends ListFragment {
     private String[] values;
     private Activity activity;
-    private static String subject;
+    private static SchoolSubject schoolSubject;
+    private SchoolClass schoolClass;
 
     @SuppressLint("ValidFragment")
     public SubjectPickerController(SubjectPickerActivity activity) {
-        SchoolClass schoolClass = DummyDataLand.getInt().getSchoolClassByName(SchoolClassPickerController.getSchoolClass()); //Hier muss dann ein DB Anschluss hin!
+        this.schoolClass = DummyDataLand.getInt().getSchoolClassByName(SchoolClassPickerController.getSchoolClass()); //Hier muss dann ein DB Anschluss hin!
         this.values = schoolClass.getSubjectsAsString();
         this.activity = activity;
     }
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        schoolSubject = schoolClass.getSubjectByName(values[position]);
         activity.startActivity(new Intent(activity, PupilListActivity.class));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 inflater.getContext(), R.layout.list_entry, R.id.shoolClassEntry,
                 values);
         setListAdapter(adapter);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
-    public static String getSubject() {
-        return subject;
+    public static SchoolSubject getSubject() {
+        return schoolSubject;
     }
 
 }

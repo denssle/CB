@@ -7,27 +7,19 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
-
-import de.hhbk.de.cb.other.debug;
 
 /**
  * Created by admin on 17.09.15.
  */
 
 public class WebConnection extends AsyncTask<String, Void, JSONObject> {
-    // String: Logindaten als String Parameter uebergeben
-    // Void: Keine Fortschrittsanzeige
-    // JSONObject: Rueckgabe der Datenbankanfrage als JSON Objekt
-    private final String USER_AGENT = "Mozilla/5.0";
-
     @Override
     protected JSONObject doInBackground(String... logindaten) {
-        URL url = null;
+        URL url;
         JSONObject jsonObject = null;
         String name = logindaten[0];
         String passwort = logindaten[1];
@@ -41,6 +33,7 @@ public class WebConnection extends AsyncTask<String, Void, JSONObject> {
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(15000);
             connection.setRequestMethod("POST");
+            String USER_AGENT = "Mozilla/5.0";
             connection.setRequestProperty("User-Agent", USER_AGENT);
 
             debug.getInt().message("URL encoded string.");
@@ -63,8 +56,6 @@ public class WebConnection extends AsyncTask<String, Void, JSONObject> {
                 debug.getInt().message("Lang: " + sb);//{"success":1,"message":"Login erfolgreich!","nachname":"Oenings","vorname":"Frank","anrede":"Herr","kuerzel":"OENI"}
                 jsonObject = makeAJSON(sb.toString());
             }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,17 +65,16 @@ public class WebConnection extends AsyncTask<String, Void, JSONObject> {
     private JSONObject makeAJSON(String s) {
         s=s.substring(1, s.length()-1);
         //{"success":1,"message":"Login erfolgreich!","nachname":"Oenings","vorname":"Frank","anrede":"Herr","kuerzel":"OENI"}
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
         String[] pairs = s.split(",");
-        for (int i=0;i<pairs.length;i++) {
-            String pair = pairs[i];
+        for (String pair : pairs) {
             String[] keyValue = pair.split(":");
             String key = keyValue[0];
             String value = keyValue[1];
 
-            key = key.substring(1, key.length()-1);
-            if(value.length()>1){
-                value = value.substring(1, value.length()-1);
+            key = key.substring(1, key.length() - 1);
+            if (value.length() > 1) {
+                value = value.substring(1, value.length() - 1);
             }
             map.put(key, value);
         }

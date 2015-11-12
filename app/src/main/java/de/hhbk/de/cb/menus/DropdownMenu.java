@@ -2,9 +2,9 @@ package de.hhbk.de.cb.menus;
 
 import android.app.Activity;
 import android.content.Intent;
-
 import de.hhbk.de.cb.R;
 import de.hhbk.de.cb.activitys.DatePickerActivity;
+import de.hhbk.de.cb.activitys.MenueActivity;
 import de.hhbk.de.cb.activitys.PupilListActivity;
 import de.hhbk.de.cb.activitys.SettingsActivity;
 import de.hhbk.de.cb.activitys.UserActivity;
@@ -36,6 +36,7 @@ public class DropdownMenu {
         } else if (id== R.id.action_save) {
             debug.getInt().message("Menu: Speichern");
             pupilListActivity.savePresence();
+            pupilListActivity.startActivity(new Intent(pupilListActivity, MenueActivity.class));
             return true;
         }
         return false;

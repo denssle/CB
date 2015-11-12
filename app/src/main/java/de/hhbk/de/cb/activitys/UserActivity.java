@@ -18,14 +18,13 @@ import de.hhbk.de.cb.controller.UserActivityController;
  * Created by admin on 22.09.15.
  */
 public class UserActivity extends AppCompatActivity {
-    private User currentUser;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        currentUser = LoginController.getUser();
+        User currentUser = LoginController.getUser();
         TextView fornameTextField = (TextView) findViewById(R.id.textFieldForname);
         fornameTextField.setText(currentUser.getForname());
 

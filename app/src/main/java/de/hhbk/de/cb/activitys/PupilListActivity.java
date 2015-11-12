@@ -6,24 +6,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import de.hhbk.de.cb.R;
 import de.hhbk.de.cb.controller.PupilListController;
 import de.hhbk.de.cb.menus.DropdownMenu;
-import de.hhbk.de.cb.other.debug;
 
 /**
  * Created by dominik on 14.10.15.
  */
 public class PupilListActivity extends AppCompatActivity {
+    private PupilListController pupilListController;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pupillist);
 
         FragmentManager fm = getFragmentManager();
         if (fm.findFragmentById(android.R.id.content) == null) {
-            PupilListController list = new PupilListController(this);
-            fm.beginTransaction().add(android.R.id.content, list).commit();
+            pupilListController = new PupilListController(this);
+            fm.beginTransaction().add(android.R.id.content, pupilListController).commit();
         }
     }
 
@@ -41,7 +43,14 @@ public class PupilListActivity extends AppCompatActivity {
         return menu.pupilListMenu(id, this);
     }
 
+    private void toastToast(String output) {
+        View v = findViewById(android.R.id.content);
+        Toast toastAusgabe=Toast.makeText(v.getContext(), output, Toast.LENGTH_SHORT);
+        toastAusgabe.show();
+    }
+
     public void savePresence() {
-        debug.getInt().message("Speichere Anwesenheit. Nicht!");
+        toastToast("Speichere Anwesenheit. Nicht!");
+        pupilListController.savePresence();
     }
 }

@@ -68,16 +68,10 @@ public class User {
     }
 
     public boolean isUsernameCorrect(String otherName) {
-        if(otherName.equals(username)) {
-            return true;
-        }
-        return false;
+        return otherName.equals(username);
     }
     public boolean isPasswordCorrect(String pass) {
-        if(pass.equals(password)) {
-            return true;
-        }
-        return false;
+        return pass.equals(password);
     }
 
     public void init(String name, String password, JSONObject result) {
@@ -88,9 +82,7 @@ public class User {
             this.forname = (String) result.get("vorname");
             this.title = (String) result.get("anrede");
             this.shortname = (String) result.get("kuerzel");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (NullPointerException e) {
+        } catch (JSONException | NullPointerException e) {
             e.printStackTrace();
         }
     }

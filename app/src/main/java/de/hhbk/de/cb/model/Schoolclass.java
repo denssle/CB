@@ -18,7 +18,7 @@ public class SchoolClass {
     public SchoolClass(String classname) {
         this.id = UUID.randomUUID();
         this.classname = classname;
-        this.pupils = new ArrayList<Pupil>();
+        this.pupils = new ArrayList<>();
         this.subjects = new ArrayList<SchoolSubject>();
     }
     public UUID getID() {
@@ -74,6 +74,15 @@ public class SchoolClass {
             String pname = pupil.getForname()+" "+pupil.getLastname();
             if(pname.equals(name)) {
                 return pupil;
+            }
+        }
+        return null;
+    }
+
+    public SchoolSubject getSubjectByName(String name) {
+        for (SchoolSubject subject : subjects) {
+            if(subject.getName().equals(name)) {
+                return subject;
             }
         }
         return null;
