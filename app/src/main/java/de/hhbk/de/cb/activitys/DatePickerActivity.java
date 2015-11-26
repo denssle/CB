@@ -11,7 +11,6 @@ import android.widget.DatePicker;
 import de.hhbk.de.cb.R;
 import de.hhbk.de.cb.controller.DatePickerController;
 import de.hhbk.de.cb.menus.DropdownMenu;
-
 /**
  * Created by dominik on 08.10.15.
  */

@@ -18,6 +18,7 @@ import de.hhbk.de.cb.menus.DropdownMenu;
  */
 public class PupilListActivity extends AppCompatActivity {
     private PupilListController pupilListController;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pupillist);
@@ -45,8 +46,8 @@ public class PupilListActivity extends AppCompatActivity {
 
     private void toastToast(String output) {
         View v = findViewById(android.R.id.content);
-        Toast toastAusgabe=Toast.makeText(v.getContext(), output, Toast.LENGTH_SHORT);
-        toastAusgabe.show();
+        Toast toast = Toast.makeText(v.getContext(), output, Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     public void savePresence() {

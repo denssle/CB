@@ -7,7 +7,7 @@ import java.util.UUID;
  * Created by admin on 28.09.15.
  */
 public class Pupil {
-    UUID id;
+    private UUID id;
     private String forname;
     private String lastname;
     private SchoolClass schoolClass;

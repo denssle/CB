@@ -4,7 +4,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/action_pupillist" android:title="@string/pupillist"/>
+    <item android:id="@+id/action_new_entry" android:title="@string/new_entry"/>
+    <item android:id="@+id/action_update_entry" android:title="@string/update_entry"/>
     <item android:id="@+id/action_user" android:title="@string/user"/>
     <item android:id="@+id/action_settings" android:title="@string/settings"/>
 </menu>

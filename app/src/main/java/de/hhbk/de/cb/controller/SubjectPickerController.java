@@ -30,7 +30,7 @@ public class SubjectPickerController extends ListFragment {
 
     @SuppressLint("ValidFragment")
     public SubjectPickerController(SubjectPickerActivity activity) {
-        this.schoolClass = DummyDataLand.getInt().getSchoolClassByName(SchoolClassPickerController.getSchoolClass()); //Hier muss dann ein DB Anschluss hin!
+        this.schoolClass = DummyDataLand.getInt().getSchoolClassByName(SchoolClassPickerController.getSchoolClass()); //TODO Hier muss dann ein DB Anschluss hin!
         this.values = schoolClass.getSubjectsAsString();
         this.activity = activity;
     }

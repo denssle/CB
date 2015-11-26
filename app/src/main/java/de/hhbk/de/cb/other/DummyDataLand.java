@@ -3,6 +3,9 @@ package de.hhbk.de.cb.other;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.UUID;
+
+import javax.security.auth.Subject;
 
 import de.hhbk.de.cb.model.Lesson;
 import de.hhbk.de.cb.model.Pupil;
@@ -15,7 +18,7 @@ import de.hhbk.de.cb.model.SchoolSubject;
 public class DummyDataLand {
     private Map<String, SchoolClass> schoolClassMap;
     private static DummyDataLand ourInstance = new DummyDataLand();
-    private static Map<String,Lesson> lessonMap = new HashMap<>();
+    private static Map<UUID, Lesson> lessonMap = new HashMap<>(); //Date as String, Lesson
     private DummyDataLand() {
         schoolClassMap = buildClasses();
     }
@@ -23,8 +26,8 @@ public class DummyDataLand {
     private Map<String, SchoolClass> buildClasses() {
         Map<String,SchoolClass> schoolclasses = new HashMap<>();
         String[] classnames = {"FUU 02","BAA", "YOLO", "HHBK"};
-        String[] lastnames = {"Agalisiore", "Athoe", "Briususaili", "Faumeti", "Gent", "Hocacn", "Jotanic", "Lyber", "Moimarileio", "Moion", "Nenchio", "Oeoron", "Pesia", "Pial", "Polceronu", "Rtheg", "Tesisthr", "Usarole", "Usoeod", "Ymonod","Bisse",
-                "Disicrumuri", "Duturidi", "Entag", "Farampre", "Ganasi", "Gertheusiu", "Icis", "Iolyr", "Joprtan", "Lasclaba", "Osthusares", "Regarp", "Rsmnteth", "Sion", "Ticoner", "Usica", "Vialic", "Ytusilu", "Zenot"};
+        String[] lastnames = {"Aqualia", "Athoe", "Brussilla", "Flamenetti", "Gutti", "Hocacn", "Jotanic", "Lyber", "Moimarileio", "Moion", "Nenchio", "Oeoron", "Persia", "Wuuphs", "Lavendal", "Rema", "Tesisthr", "Ursulah", "Unused", "Yo Mod","Bisse",
+                "Dumarama", "Duduwu", "Entag", "Farampre", "Ganasi", "Guggerlei", "Icis", "Igel", "Jorron", "Lasclaba", "Osthusares", "Relama", "Rsmnteth", "Sion", "Ticoner", "Usica", "Vialic", "Ypsilon", "Zeitnot"};
         String[] fornames = {"Astral Dancer", "Jasminebeats", "Amethyst Tinsel", "Berryjoe", "Pumpkin Set", "Bubble Blazer", "Dream Dasher", "Amethyst Toffee", "Foresthunt", "Hazel Vinyl", "Laughmarch", "Lemon Sparkle", "Polishfly", "Persimmonsstrudel Breeze", "Rainbow Voyager", "Rainbow Sweets", "Shore Lightning", "Silk Rocket", "Stampbuds", "Twilight Rhyme",
                 "Charming Starlight", "Star Ashes", "Emeraldaura", "Evening Light", "Shadeflurry Punch", "Treasurepop", "Jade Flame", "Joy Pastels", "Mahogany Sage", "Marble Riff", "Meadow Toffee", "Moonlight Twirler", "Peach Break", "Rain Gears", "Route Will", "Scrolldrop", "Spring Masher", "Timelink", "Trickssky", "Wave Sweets"};
         String[] subjects = {"Afrikanistik", "Albanologie", "Allgemeine Sprachwissenschaft", "Allgemeine und Vergleichende Literaturwissenschaft", "Altamerikanistik", "Alte Geschichte", "Altorientalistik", "Angewandte Kernphysik, ein Sammelbegriff für Kerntechnik und ähnliche energienahe Studiengänge", "Anthropologie", "Arabistik", "Arbeitswissenschaft", "Astronomie", "Astrophysik", "Austronesistik", "Baltistik", "Bauforschung/Baugeschichte", "Bibliothekswissenschaft", "Bioinformatik", "Biophysik", "Buchwissenschaft", "Byzantinistik", "Christlicher Orient", "Computerlinguistik", "Denkmalpflege", "Eisenbahnwesen", "Europäische Ethnologie/Volkskunde", "Filmwissenschaft", "Finnougristik und Uralistik", "Frisistik", "Gender Studies", "Geochemie", "Geophysik", "Gerontologie", "Geschichte der Medizin", "Hauswirtschaftswissenschaft", "Historische Hilfswissenschaften", "Indische Kunstgeschichte", "Indogermanistik", "Indologie", "Informationswissenschaft", "Iranistik", "Islamische Kunstgeschichte", "Islamwissenschaft", "Japanologie", "Jiddistik", "Journalistik", "Judaistik", "Kanadistik", "Kaukasiologie", "Keltologie", "Klinische Linguistik", "Koptologie", "Koreanistik",
@@ -32,7 +35,7 @@ public class DummyDataLand {
                 "Niederlande-Studien", "Niederlandistik", "Ostasiatische Kunstgeschichte", "Ostasienwissenschaft", "Osteuropäische Geschichte", "Osteuropastudien", "Papyrologie", "Phonetik", "Religionswissenschaft", "Restaurierungswissenschaft", "Schiffstechnik", "Semitistik",
                 "Sexualwissenschaft", "Sinologie", "Skandinavistik/Nordistik", "Slavistik", "Sorabistik", "Sprachlehrforschung", "Sprechwissenschaft", "Tanzwissenschaft", "Technikgeschichte", "Textilgestaltung", "Thaiistik", "Theaterwissenschaft", "Tibetologie", "Translatologie", "Turkologie", "Umformtechnik", "Ur- und Frühgeschichte", "Vietnamistik", "Wirtschafts- und Sozialgeschichte", "Wissenschaftsgeschichte"};
 
-        for(int i = 0; i<4; i++){
+        for(int i = 0; i<schoolclasses.size(); i++){
             SchoolClass schoolClass = new SchoolClass(classnames[i]);
 
             for(int j = 10*i; j<10*(i+1); j++) {
@@ -55,6 +58,7 @@ public class DummyDataLand {
         }
         return schoolclasses;
     }
+
     private String[] makeStringsOutOfClasses(Map<String,SchoolClass> classes) {
         String[] result = new String[classes.size()];
         result = classes.keySet().toArray(result);
@@ -65,13 +69,10 @@ public class DummyDataLand {
         return ourInstance;
     }
 
-    public Map<String, SchoolClass> getSchoolClassMap() {
-        return schoolClassMap;
-    }
-
-    public String[] getValues() {
+    public String[] getNamesOfSchoolClasses() {
         return makeStringsOutOfClasses(schoolClassMap);
     }
+
     public SchoolClass getSchoolClassByName(String name) {
         if (schoolClassMap.containsKey(name)) {
             return schoolClassMap.get(name);
@@ -80,6 +81,6 @@ public class DummyDataLand {
     }
 
     public static void saveLesson(Lesson lesson) {
-        lessonMap.put(lesson.getDate(),lesson);
+        lessonMap.put(lesson.getID(),lesson);
     }
 }

@@ -28,7 +28,7 @@ public class SchoolClassPickerController extends ListFragment {
 
     @SuppressLint("ValidFragment")
     public SchoolClassPickerController(SchoolClassPickerActivity activity) {
-        this.numbers_text = DummyDataLand.getInt().getValues();//Hier muss dann ein DB Anschluss hin!
+        this.numbers_text = DummyDataLand.getInt().getNamesOfSchoolClasses();//TODO Hier muss dann ein DB Anschluss hin!
         this.activity = activity;
     }
     @Override

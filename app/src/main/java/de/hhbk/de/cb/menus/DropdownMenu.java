@@ -16,20 +16,23 @@ import de.hhbk.de.cb.other.debug;
 public class DropdownMenu {
     public boolean manageMenu(int id, Activity activity) {
         if (id == R.id.action_settings) {
-            debug.getInt().message("Menu: Settings");
+            debug.getInt().message("Menu: Settings.");
             activity.startActivity(new Intent(activity, SettingsActivity.class));
             return true;
         } else if(id == R.id.action_user) {
-            debug.getInt().message("Menu: User");
+            debug.getInt().message("Menu: User.");
             activity.startActivity(new Intent(activity, UserActivity.class));
             return true;
-        } else if(id == R.id.action_pupillist) {
-            debug.getInt().message("Menu: Schuelerliste");
+        } else if(id == R.id.action_new_entry) {
+            debug.getInt().message("Menu: Neuer Eintrag.");
             activity.startActivity(new Intent(activity, DatePickerActivity.class));
             return true;
+        } else if(id == R.id.action_update_entry) {
+            debug.getInt().message("Menu: Bearbeite Eintrag.");
         }
         return false;
     }
+
     public boolean pupilListMenu (int id, PupilListActivity pupilListActivity) {
         if (manageMenu(id,pupilListActivity)) {
             return true;
