@@ -1,7 +1,11 @@
 package de.hhbk.de.cb.menus;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import de.hhbk.de.cb.R;
 import de.hhbk.de.cb.activitys.DatePickerActivity;
 import de.hhbk.de.cb.activitys.MenueActivity;
@@ -25,10 +29,19 @@ public class DropdownMenu {
             return true;
         } else if(id == R.id.action_new_entry) {
             debug.getInt().message("Menu: Neuer Eintrag.");
+            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(activity);
+            SharedPreferences.Editor edit = sp.edit();
+            edit.putBoolean("new_entry", true);
+            edit.commit();
             activity.startActivity(new Intent(activity, DatePickerActivity.class));
             return true;
         } else if(id == R.id.action_update_entry) {
             debug.getInt().message("Menu: Bearbeite Eintrag.");
+            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(activity);
+            SharedPreferences.Editor edit = sp.edit();
+            edit.putBoolean("new_entry", false);
+            edit.commit();
+            activity.startActivity(new Intent(activity, DatePickerActivity.class));
         }
         return false;
     }

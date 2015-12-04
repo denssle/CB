@@ -1,11 +1,14 @@
 package de.hhbk.de.cb.controller;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.DatePicker;
 import java.util.Calendar;
 import de.hhbk.de.cb.activitys.DatePickerActivity;
 import de.hhbk.de.cb.activitys.SchoolClassPickerActivity;
+import de.hhbk.de.cb.other.debug;
 
 /**
  * Created by dominik on 13.10.15.
@@ -22,6 +25,7 @@ public class DatePickerController implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        debug.getInt().message("DatePickerController: onClick: Wechsel zu SchoolClassPickerActivity.");
         makeDate();
         activity.startActivity(new Intent(activity, SchoolClassPickerActivity.class));
     }

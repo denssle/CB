@@ -22,13 +22,13 @@ public class WebConnection extends AsyncTask<String, Void, JSONObject> {
         URL url;
         JSONObject jsonObject = null;
         String name = logindaten[0];
-        String passwort = logindaten[1];
+        String password = logindaten[1];
 
         try {
-            debug.getInt().message("Start: Do in Background; Name: "+name+" Passw.:"+passwort);
+            debug.getInt().message("Start: Do in Background; Name: "+name+" Passw.:"+password);
             url = new URL("http://hhbk.bplaced.net/login.php");
-
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
             connection.setDoOutput(true);
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(15000);
@@ -37,7 +37,7 @@ public class WebConnection extends AsyncTask<String, Void, JSONObject> {
             connection.setRequestProperty("User-Agent", USER_AGENT);
 
             debug.getInt().message("URL encoded string.");
-            String urlParameters = "username=" + URLEncoder.encode(name, "UTF-8") + "&passwort=" + URLEncoder.encode(passwort, "UTF-8");//oeni geheim
+            String urlParameters = "username=" + URLEncoder.encode(name, "UTF-8") + "&passwort=" + URLEncoder.encode(password, "UTF-8");//oeni geheim
             debug.getInt().message("Sende Request");
             DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
             wr.writeBytes(urlParameters);
@@ -59,7 +59,6 @@ public class WebConnection extends AsyncTask<String, Void, JSONObject> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return jsonObject;
     }
 

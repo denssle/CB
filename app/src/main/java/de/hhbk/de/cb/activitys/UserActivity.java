@@ -7,7 +7,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
-
 import de.hhbk.de.cb.menus.DropdownMenu;
 import de.hhbk.de.cb.controller.LoginController;
 import de.hhbk.de.cb.R;
