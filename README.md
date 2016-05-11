@@ -1,0 +1,1 @@
+Ein Projekt für die Berufsschule; eine Android App, die als Klassenbuch fungieren soll. 
